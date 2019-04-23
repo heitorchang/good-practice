@@ -4,9 +4,13 @@
 python -m venv venvdjango
 
 source venvdjango/Scripts/activate
+
+pip install Django
+
+django-admin startproject mysite
 ```
 
-* hide the secret key in a file `secrets.py` and write in `settings.py`,
+* hide the secret key in a file `secrets.py` and import it in `settings.py`
 
 ```
 from . import secrets
@@ -36,6 +40,7 @@ __pycache__/
 
 # Django
 
+secrets.py
 db.sqlite3
 ```
 
