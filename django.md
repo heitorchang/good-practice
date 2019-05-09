@@ -62,3 +62,65 @@ DATABASES = {
     }
 }
 ```
+
+# Initial data for models
+
+[See Django docs](https://docs.djangoproject.com/en/2.2/howto/initial-data/) and click on "Data migration"
+
+```
+python manage.py makemigrations --empty yourappname
+```
+
+then write a custom migration
+
+```
+from django.db import migrations
+
+
+def create_default_tipos(apps, schema_editor):
+    Tipo = apps.get_model('todolist', 'Tipo')
+    pessoal = Tipo(nome="Pessoal")
+    pessoal.save()
+
+    profissional = Tipo(nome="Profissional")
+    profissional.save()
+    
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('todolist', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RunPython(create_default_tipos),
+    ]
+```
+
+# related_name
+
+For `models.ForeignKey`, use `appname_class-plural` for `related_name`. [(Reference)](http://martinbrochhaus.com/related-names.html)
+
+[Be careful with related_name](https://docs.djangoproject.com/en/dev/topics/db/models/#be-careful-with-related-name-and-related-query-name)
+
+If you are using related_name or related_query_name on a ForeignKey or ManyToManyField, you must always specify a unique reverse name and query name for the field. This would normally cause a problem in abstract base classes, since the fields on this class are included into each of the child classes
+
+```
+from django.db import models
+
+class Base(models.Model):
+    m2m = models.ManyToManyField(
+        OtherModel,
+        related_name="%(app_label)s_%(class)s_related",
+        related_query_name="%(app_label)s_%(class)ss",
+    )
+
+    class Meta:
+        abstract = True
+
+class ChildA(Base):
+    pass
+
+class ChildB(Base):
+    pass
+```
