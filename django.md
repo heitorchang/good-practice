@@ -10,12 +10,12 @@ pip install Django
 django-admin startproject mysite
 ```
 
+To save required packages, run `pip freeze > requirements.txt`
+
 * hide the secret key in a file `secrets.py` and import it in `settings.py`
 
 ```
-from . import secrets
-
-SECRET_KEY = secrets.SECRET_KEY
+from .secrets import SECRET_KEY
 ```
 
 * In the new project, create a .gitignore file with:
@@ -28,14 +28,10 @@ SECRET_KEY = secrets.SECRET_KEY
 .\#*
 
 
-
 # Python
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
-
 
 
 # Django
