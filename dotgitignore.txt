@@ -8,14 +8,13 @@
 # Python
 
 __pycache__/
-*.py[cod]
-*$py.class
 
 
 # Django
 
 db.sqlite3
+venv/
 
 runserver
-migrate
 makemigrations
+migrate
