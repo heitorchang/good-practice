@@ -1,3 +1,5 @@
+# Django 2.2.2
+
 * Create a virtualenv
 
 ```
@@ -95,7 +97,7 @@ class Migration(migrations.Migration):
 
 # related_name
 
-For `models.ForeignKey`, use `appname_class-plural` for `related_name`. [(Reference)](http://martinbrochhaus.com/related-names.html)
+For `models.ForeignKey`, use `appname_class-plural` for `related_name`. For example, `myapp_pages`. [(Reference)](http://martinbrochhaus.com/related-names.html)
 
 [Be careful with related_name](https://docs.djangoproject.com/en/dev/topics/db/models/#be-careful-with-related-name-and-related-query-name)
 
@@ -221,6 +223,35 @@ class PersonForm(ModelForm):
         fields = ('name', 'bday', 'wish')
         widgets = {
             'wish': Textarea(attrs={'cols': 80, 'rows': 20}),
-            'bday': HTMLDateInput(),  # format doesn't do anything in Chrome
+            'bday': HTMLDateInput(),  # date format doesn't do anything in Chrome
         }
+```
+
+
+## `base.html` template
+
+```
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static "bday/css/style.css" %}">
+</head>
+<body>
+BDay Base
+
+{% block content %}{% endblock %}
+<script src="{% static "ui/js/w2ui.min.js" %}"></script>
+</body>
+```
+
+## `index.html`
+
+```
+{% extends "bday/base.html" %}
+{% load static %}
+
+{% block content %}
+BDay index
+
+<script src="{% static "bday/js/alerts.js" %}"></script>
+{% endblock %}
 ```
