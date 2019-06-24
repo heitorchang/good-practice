@@ -38,6 +38,11 @@ __pycache__/
 
 secrets.py
 db.sqlite3
+
+# Virtualenv
+
+env/
+venv/
 ```
 
 [https://docs.djangoproject.com/en/2.1/ref/models/fields/](https://docs.djangoproject.com/en/2.1/ref/models/fields/)
