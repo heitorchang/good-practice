@@ -1,3 +1,5 @@
+# Django 2.2.2
+
 * Create a virtualenv
 
 ```
@@ -100,7 +102,7 @@ class Migration(migrations.Migration):
 
 # related_name
 
-For `models.ForeignKey`, use `appname_class-plural` for `related_name`. [(Reference)](http://martinbrochhaus.com/related-names.html)
+For `models.ForeignKey`, use `appname_class-plural` for `related_name`. For example, `myapp_pages`. [(Reference)](http://martinbrochhaus.com/related-names.html)
 
 [Be careful with related_name](https://docs.djangoproject.com/en/dev/topics/db/models/#be-careful-with-related-name-and-related-query-name)
 
@@ -124,4 +126,137 @@ class ChildA(Base):
 
 class ChildB(Base):
     pass
+```
+
+## App `urls.py`
+
+```
+from django.urls import path
+
+from . import views
+
+app_name = "bday"
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('all/', views.ListView.as_view(), name="list"),
+    path('<int:pk>/', views.DetailView.as_view(), name="detail"),
+
+    path('add', views.PersonCreate.as_view(), name='add'),
+    path('<int:pk>/edit', views.PersonUpdate.as_view(), name='update'),
+    path('<int:pk>/delete', views.PersonDelete.as_view(), name='delete'),
+]
+```
+
+
+## App `models.py`
+
+```
+from django.db import models
+from django.urls import reverse
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=80)
+    bday = models.DateField()
+    wish = models.CharField(max_length=80)
+
+    def get_absolute_url(self):
+        return reverse('bday:detail', kwargs={'pk': self.pk})
+        
+    def __str__(self):
+        return str(self.id) + " " + self.name
+```
+
+
+## App `views.py`
+
+```
+from django.shortcuts import render
+from django.views import generic
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from .models import Person
+from .forms import PersonForm
+
+class PersonCreate(CreateView):
+    """It is strongly recommended that you explicitly set all fields that should be edited in the form using the fields attribute.
+
+    https://docs.djangoproject.com/en/2.1/topics/forms/modelforms/#django.forms.ModelForm
+    """
+    
+    model = Person
+    form_class = PersonForm
+
+
+class PersonUpdate(UpdateView):
+    model = Person
+    form_class = PersonForm
+
+
+class PersonDelete(DeleteView):
+    model = Person
+    success_url = reverse_lazy('bday:list')
+
+
+def index(request):
+    return render(request, 'bday/index.html')
+
+
+class DetailView(generic.DetailView):
+    model = Person
+    
+
+class ListView(generic.ListView):
+    model = Person
+```
+
+
+## App `forms.py`
+
+```
+from django.forms import ModelForm, Textarea, DateInput
+from .models import Person
+
+class HTMLDateInput(DateInput):
+    input_type = "date"
+    
+
+class PersonForm(ModelForm):
+    class Meta:
+        model = Person
+        fields = ('name', 'bday', 'wish')
+        widgets = {
+            'wish': Textarea(attrs={'cols': 80, 'rows': 20}),
+            'bday': HTMLDateInput(),  # date format doesn't do anything in Chrome
+        }
+```
+
+
+## `base.html` template
+
+```
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static "bday/css/style.css" %}">
+</head>
+<body>
+BDay Base
+
+{% block content %}{% endblock %}
+<script src="{% static "ui/js/w2ui.min.js" %}"></script>
+</body>
+```
+
+## `index.html`
+
+```
+{% extends "bday/base.html" %}
+{% load static %}
+
+{% block content %}
+BDay index
+
+<script src="{% static "bday/js/alerts.js" %}"></script>
+{% endblock %}
 ```
