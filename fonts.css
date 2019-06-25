@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Lusitana';
+    src: url('fonts/Lusitana-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+body {
+    font-family: 'Lusitana';
+    margin: 18px;
+}
