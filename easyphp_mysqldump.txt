@@ -1,0 +1,2 @@
+cd /c/Progra~1/EasyPHP-DevServer-14.1VC11/binaries/mysql/bin/
+./mysqldump -u root pontualimportb1 > easyphp_db_2019_07_01.sql
