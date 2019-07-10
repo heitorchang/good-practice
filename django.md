@@ -260,3 +260,20 @@ BDay index
 <script src="{% static "bday/js/alerts.js" %}"></script>
 {% endblock %}
 ```
+
+### CSRF, CORS
+
+There is a `corsheaders` app that should be added at the beginning of `INSTALLED_APPS`. Also, add the following line:
+
+```
+CORS_ORIGIN_ALLOW_ALL = True
+```
+
+CSRF may be exempted for certain views:
+
+```
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def mylist(request):
+```
