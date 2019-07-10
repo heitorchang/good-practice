@@ -102,7 +102,33 @@ class Migration(migrations.Migration):
 
 # related_name
 
+In Django REST Framework's [Authentication tutorial](https://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/), `related_name` must match exactly the name of the Serializer variable in `serializers.py`.
+
+```
+# models.py
+
+class Snippet(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    # ...
+    owner = models.ForeignKey('auth.User', related_name='snippets_snippets', on_delete=models.CASCADE)
+
+
+# serializers.py
+
+class UserSerializer(serializers.ModelSerializer):
+    snippets_snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'snippets_snippets')
+```
+
 For `models.ForeignKey`, use `appname_class-plural` for `related_name`. For example, `myapp_pages`. [(Reference)](http://martinbrochhaus.com/related-names.html)
+
+```
+class Page(models.Model):
+    site = models.ForeignKey(Site, related_name="myapp_pages")
+```
 
 [Be careful with related_name](https://docs.djangoproject.com/en/dev/topics/db/models/#be-careful-with-related-name-and-related-query-name)
 
