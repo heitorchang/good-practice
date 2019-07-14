@@ -289,7 +289,17 @@ BDay index
 
 ### CSRF, CORS
 
-There is a `corsheaders` app that should be added at the beginning of `INSTALLED_APPS`. Also, add the following line:
+`pip install django-cors-headers`
+
+Add `corsheaders` app at the beginning of `INSTALLED_APPS`.
+
+Add in `MIDDLEWARE`, before `'django.middleware.common.CommonMiddleware'`
+
+```
+'corsheaders.middleware.CorsMiddleware',
+```
+
+Add the following line after `MIDDLEWARE`:
 
 ```
 CORS_ORIGIN_ALLOW_ALL = True
