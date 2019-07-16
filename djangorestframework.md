@@ -2,13 +2,13 @@
 
 ## virtualenv
 
-`python -m venv venvrestframeworknotes`
+`python -m venv venvdrf`
 
-`source venvrestframeworknotes/Scripts/activate`
+`source venvdrf/Scripts/activate`
 
 ## Python packages
 
-Most likely you will need to get through CORS and CSRF restrictions
+Most likely you will need to get through CORS and CSRF restrictions while in development.
 
 `pip install` the following:
 
@@ -33,7 +33,18 @@ Create the `.gitignore` file:
 ## .gitignore
 
 ```
-# react 
+# emacs
+\#*
+.\#*
+
+# python
+__pycache__
+
+# django
+secrets.py
+db.sqlite3
+
+# if using react 
 node_modules
 .pnp
 .pnp.js
@@ -54,17 +65,6 @@ build
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# emacs
-\#*
-.\#*
-
-# python
-__pycache__
-
-# django
-secrets.py
-db.sqlite3
 ```
 
 # Generate the server (back-end)
@@ -75,7 +75,7 @@ db.sqlite3
 
 Add to `settings.py`:
 
-```
+```python
 # Save SECRET_KEY to secrets.py (hidden through .gitignore)
 from .secrets import SECRET_KEY 
 
@@ -281,8 +281,4 @@ class TodoItemTests(APITestCase):
 
 `python manage.py runserver`
 
-# Client (front-end)
-
-In the topmost directory, run
-
-`npx create-react-app client`
+Now choose a client (such as React)
