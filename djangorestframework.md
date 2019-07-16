@@ -91,7 +91,6 @@ INSTALLED_APPS = [
     ...
     'rest_framework',
     'rest_registration',
-    'MYAPP',   
 ]
 
 # Add CORS middleware before CommonMiddleware
@@ -127,6 +126,8 @@ REST_REGISTRATION = {
 
 Run `python manage.py startapp APPNAME`
 
+Add the app to `INSTALLED_APPS` in `settings.py`
+
 ### Models
 
 ```python
@@ -139,8 +140,6 @@ class TodoItem(models.Model):
     class Meta:
         ordering = ('description',)
 ```
-
-Add the app to `settings.py`
 
 Then run `python manage.py makemigrations` and `python manage.py migrate`
 
