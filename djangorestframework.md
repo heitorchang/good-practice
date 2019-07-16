@@ -78,7 +78,7 @@ yarn-error.log*
 Add to `settings.py`:
 
 ```python
-# PROJECTNAME/PROJECTNAME/settings.py
+# server/server/settings.py
 
 # Save SECRET_KEY to secrets.py (hidden through .gitignore)
 from .secrets import SECRET_KEY 
@@ -106,7 +106,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 ...
 
-WSGI_APPLICATION = 'PROJECTNAME.wsgi.application'
+WSGI_APPLICATION = 'server.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -240,10 +240,10 @@ urlpatterns = [
 
 ### Project `urls.py`
 
-Edit `PROJECTNAME/PROJECTNAME/urls.py` and add
+Edit `server/server/urls.py` and add
 
 ```python
-# PROJECTNAME/PROJECTNAME/urls.py
+# server/server/urls.py
 
 from django.urls import path, include
 
