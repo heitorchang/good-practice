@@ -8,7 +8,7 @@
 
 ## Python packages
 
-Most likely you will need to get through CORS and CSRF restrictions while in development.
+Most likely you will need to get past CORS and CSRF restrictions while in development.
 
 `pip install` the following:
 
@@ -281,4 +281,4 @@ class TodoItemTests(APITestCase):
 
 `python manage.py runserver`
 
-Now choose a client (such as React)
+Now choose a front-end client (such as [React](https://github.com/heitorchang/good-practice/blob/master/react.md))
