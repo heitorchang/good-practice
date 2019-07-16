@@ -222,6 +222,18 @@ admin.site.register(models.TodoItem)
 
 Run `python manage.py createsuperuser` as an alternative to going through `rest_registration`.
 
+### REST Registration
+
+To create a new user, `POST` (either form data or JSON) the following information to `/accounts/register/`
+
+```
+{
+  "username": "myname",
+  "password": "SupersafePassword123",
+  "password_confirm": "SupersafePassword123"
+}
+```
+
 ### App `urls.py`
 
 ```python
@@ -278,10 +290,20 @@ from .models import TodoItem
 class TodoItemTests(APITestCase):
     def test_create_todoitem(self):
         """Create a new TodoItem"""
-        user = User.objects.create_user(username="tester", email="a@a.com", password="secret")
 
+        my_username = "tester"
+        my_password = "SuperSecret123@"
+
+        print(my_username, my_password)
+        
+        # Create new user
+        url = "/accounts/register/"
+        response = self.client.post(url, {"username": my_username, "password": my_password, "password_confirm": my_password}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        # Get access token
         url = reverse('token_obtain_pair')
-        response = self.client.post(url, {"username": "tester", "password": "secret"}, format='json')
+        response = self.client.post(url, {"username": my_username, "password": my_password}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         token = response.data['access']
 
