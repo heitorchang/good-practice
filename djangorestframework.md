@@ -1,4 +1,6 @@
-# Django REST Framework notes
+# Django REST Framework back-end server
+
+The following steps create a REST API server for todo items. Authentication is handled with JWT.
 
 ## virtualenv
 
@@ -76,6 +78,8 @@ yarn-error.log*
 Add to `settings.py`:
 
 ```python
+# PROJECTNAME/PROJECTNAME/settings.py
+
 # Save SECRET_KEY to secrets.py (hidden through .gitignore)
 from .secrets import SECRET_KEY 
 
@@ -121,11 +125,13 @@ REST_REGISTRATION = {
 
 ## Django App
 
-`python manage.py startapp APPNAME`
+Run `python manage.py startapp APPNAME`
 
 ### Models
 
 ```python
+# APPNAME/models.py
+
 class TodoItem(models.Model):
     owner = models.ForeignKey('auth.User', related_name='appname_todoItems', on_delete=models.CASCADE)
     description = models.CharField(max_length=100)
@@ -136,12 +142,13 @@ class TodoItem(models.Model):
 
 Add the app to `settings.py`
 
-`python manage.py makemigrations`
-`python manage.py migrate`
+Then run `python manage.py makemigrations` and `python manage.py migrate`
 
 ### Serializers
 
 ```python
+# APPNAME/serializers.py
+
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -159,6 +166,8 @@ class TodoItemSerializer(serializers.ModelSerializer):
 ### Permissions
 
 ```python
+# APPNAME/permissions.py
+
 from rest_framework import permissions
 
 
@@ -174,6 +183,8 @@ class IsOwner(permissions.BasePermission):
 ### Views
 
 ```python
+# APPNAME/views.py
+
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from .models import TodoItem
@@ -201,15 +212,21 @@ class TodoItemDetail(generics.RetrieveUpdateDestroyAPIView):
 ### Admin (optional)
 
 ```python
+# APPNAME/admin.py
+
 from django.contrib import admin
 from . import models
 
 admin.site.register(models.TodoItem)
 ```
 
+Run `python manage.py createsuperuser`
+
 ### App `urls.py`
 
 ```python
+# APPNAME/urls.py
+
 from django.urls import path
 from . import views
 
@@ -223,9 +240,11 @@ urlpatterns = [
 
 ### Project `urls.py`
 
-Edit `server/server/urls.py` and add
+Edit `PROJECTNAME/PROJECTNAME/urls.py` and add
 
 ```python
+# PROJECTNAME/PROJECTNAME/urls.py
+
 from django.urls import path, include
 
 from rest_framework_simplejwt.views import (
@@ -246,6 +265,8 @@ urlpatterns = [
 ## Tests
 
 ```python
+# APPNAME/tests.py
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
@@ -275,10 +296,10 @@ class TodoItemTests(APITestCase):
         self.assertEqual(TodoItem.objects.filter(description='new todo item').count(), 1)
 ```
 
-`python manage.py test`
+Run `python manage.py test`
 
 ## Running the server
 
-`python manage.py runserver`
+Run `python manage.py runserver`
 
 Now choose a front-end client (such as [React](https://github.com/heitorchang/good-practice/blob/master/react.md))
