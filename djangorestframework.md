@@ -67,11 +67,9 @@ secrets.py
 db.sqlite3
 ```
 
-## Generate the server (back-end) and the client (front-end)
+# Generate the server (back-end)
 
 `django-admin.exe startproject server`
-
-`npx create-react-app client`
 
 ## Django settings
 
@@ -136,6 +134,8 @@ class TodoItem(models.Model):
         ordering = ('description',)
 ```
 
+Add the app to `settings.py`
+
 `python manage.py makemigrations`
 `python manage.py migrate`
 
@@ -152,7 +152,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     
     class Meta:
-        model = TodoITem
+        model = TodoItem
         fields = ('id', 'owner', 'description')
 ```
 
@@ -198,15 +198,26 @@ class TodoItemDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwner,)
 ```
 
+### Admin (optional)
+
+```
+from django.contrib import admin
+from . import models
+
+admin.site.register(models.TodoItem)
+```
+
 ### App `urls.py`
 
 ```
 from django.urls import path
 from . import views
 
+app_name = 'todos'
+
 urlpatterns = [
-    path('todoitems/', views.TodoItemList.as_view()),
-    path('todoitems/<int:pk>/', views.TodoItemDetail.as_view()),
+    path('todoitems/', views.TodoItemList.as_view(), name="todoItemList"),
+    path('todoitems/<int:pk>/', views.TodoItemDetail.as_view(), name="todoItemDetail"),
 ]
 ```
 
@@ -227,10 +238,51 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('accounts/', include('rest_registration.api.urls')),
+    path('todos/', include('todos.urls')),
 ]
 
 ```
 
+## Tests
+
+```
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APITestCase, APIClient
+from django.contrib.auth.models import User
+from .models import TodoItem
+
+
+class TodoItemTests(APITestCase):
+    def test_create_todoitem(self):
+        """Create a new TodoItem"""
+        user = User.objects.create_user(username="tester", email="a@a.com", password="secret")
+
+        url = reverse('token_obtain_pair')
+        response = self.client.post(url, {"username": "tester", "password": "secret"}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        token = response.data['access']
+
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION='Bearer ' + token)
+        
+        url = reverse('todos:todoItemList')
+        data = {'description': 'new todo item'}
+        response = client.post(url, data, format='json')
+        
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(TodoItem.objects.count(), 1)
+        self.assertEqual(TodoItem.objects.filter(description='new todo item').count(), 1)
+```
+
+`python manage.py test`
+
 ## Running the server
 
 `python manage.py runserver`
+
+# Client (front-end)
+
+In the topmost directory, run
+
+`npx create-react-app client`
