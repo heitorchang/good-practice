@@ -132,6 +132,8 @@ Add the app to `INSTALLED_APPS` in `settings.py`
 ```python
 # APPNAME/models.py
 
+from django.db import models
+
 class TodoItem(models.Model):
     owner = models.ForeignKey('auth.User', related_name='appname_todoItems', on_delete=models.CASCADE)
     description = models.CharField(max_length=100)
@@ -218,7 +220,7 @@ from . import models
 admin.site.register(models.TodoItem)
 ```
 
-Run `python manage.py createsuperuser`
+Run `python manage.py createsuperuser` as an alternative to going through `rest_registration`.
 
 ### App `urls.py`
 
@@ -243,6 +245,7 @@ Edit `server/server/urls.py` and add
 ```python
 # server/server/urls.py
 
+from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework_simplejwt.views import (
@@ -296,7 +299,7 @@ class TodoItemTests(APITestCase):
 
 Run `python manage.py test`
 
-## Running the server
+## Starting the server
 
 Run `python manage.py runserver`
 
