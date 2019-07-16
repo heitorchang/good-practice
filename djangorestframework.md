@@ -10,7 +10,7 @@ The following steps create a REST API server for todo items. Authentication is h
 
 ## Python packages
 
-Most likely you will need to get past CORS and CSRF restrictions while in development.
+Most likely you will need to get past CORS restrictions while in development.
 
 `pip install` the following:
 
