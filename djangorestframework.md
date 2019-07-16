@@ -125,7 +125,7 @@ REST_REGISTRATION = {
 
 ### Models
 
-```
+```python
 class TodoItem(models.Model):
     owner = models.ForeignKey('auth.User', related_name='appname_todoItems', on_delete=models.CASCADE)
     description = models.CharField(max_length=100)
@@ -141,7 +141,7 @@ Add the app to `settings.py`
 
 ### Serializers
 
-```
+```python
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -158,7 +158,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
 
 ### Permissions
 
-```
+```python
 from rest_framework import permissions
 
 
@@ -173,7 +173,7 @@ class IsOwner(permissions.BasePermission):
 
 ### Views
 
-```
+```python
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from .models import TodoItem
@@ -200,7 +200,7 @@ class TodoItemDetail(generics.RetrieveUpdateDestroyAPIView):
 
 ### Admin (optional)
 
-```
+```python
 from django.contrib import admin
 from . import models
 
@@ -209,7 +209,7 @@ admin.site.register(models.TodoItem)
 
 ### App `urls.py`
 
-```
+```python
 from django.urls import path
 from . import views
 
@@ -225,7 +225,7 @@ urlpatterns = [
 
 Edit `server/server/urls.py` and add
 
-```
+```python
 from django.urls import path, include
 
 from rest_framework_simplejwt.views import (
@@ -245,7 +245,7 @@ urlpatterns = [
 
 ## Tests
 
-```
+```python
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
