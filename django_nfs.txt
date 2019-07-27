@@ -1,0 +1,124 @@
+NOTE: Moved to "good-practice"
+
+Installing and running Django on NearlyFreeSpeech
+
+1. Create a new Apache 2.4 generic site
+2. ssh
+3. In /home/protected/, clone the Django site
+4. python3 -m venv virtualenv
+5. source virtualenv/bin/activate
+6. pip install django gunicorn
+7. create the file run-django.sh in the same directory as manage.py
+
+#!/bin/bash
+
+source /home/protected/virtualenv/bin/activate
+gunicorn MY_PROJECT_NAME.wsgi
+
+7. add daemon in NFS members' admin site
+  - tag: django
+  - command line: /home/protected/MY_PROJECT/run-django.sh
+  - working directory: /home/protected/MY_PROJECT/
+
+8. add a proxy
+  - protocol: http
+  - base URI: /
+  - Document Root: /
+  - target port: 8000
+  - Direct (bypass Apache entirely) if checked, Django handles the entire site
+      if checked, it's faster and scales better
+
+9. exclude (say) /images/ directory by leaving Direct unchecked and adding
+   another proxy. An images/ directory should be created in /home/public/
+
+  - protocol: none
+  - base URI: /images/
+  - Document root: /images/
+  - target port: 8080  (port does not matter for protocol: none)
+  
+10. If needed, restart daemon in NFS admin site (such as when settings change)
+
+
+Creating a login page
+
+python manage.py startapp accounts
+
+in settings, install accounts and add:
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+at the end
+
+in PROJECT/urls.py add:
+
+    path('accounts/', include('django.contrib.auth.urls')),
+
+copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/default/ to accounts/templates/registration/login.html
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Log in | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    
+</head>
+
+<body>
+
+  <div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        
+<h1 id="site-name"><a href="/admin/">Login</a></h1>
+
+        </div>
+        
+        
+    </div>
+	
+	<div id="content-main">
+	  <center>
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+</center>
+</div>
+</body>
