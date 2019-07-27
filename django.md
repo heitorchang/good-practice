@@ -41,6 +41,12 @@ __pycache__/
 secrets.py
 db.sqlite3
 
+# touch these filenames so that they may be tab-completed
+makemigrations
+migrate
+createsuperuser
+runserver
+
 # Virtualenv
 
 env/
@@ -312,4 +318,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def mylist(request):
+```
+
+## `urls.py` redirect
+
+```
+from django.views.generic.base import RedirectView
+
+...
+
+path('', RedirectView.as_view(url="NEWURL/", permanent=False), name="siteindex"),
 ```
