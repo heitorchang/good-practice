@@ -326,3 +326,49 @@ Run `python manage.py test`
 Run `python manage.py runserver`
 
 Now choose a front-end client (such as [React](https://github.com/heitorchang/good-practice/blob/master/react.md))
+
+## Testing
+
+Use `Postman`, `curl`, `httpie`, etc.
+
+## REST Framework Simple JWT Authentication
+
+`POST` data (form-data) to `/token/` to get the access and refresh tokens
+
+```
+"username": "lois"
+"password": "rest1233"
+```
+
+## REST Registration
+
+`POST` form-data to `/accounts/register/`
+
+```
+username
+password
+password_confirm
+```
+
+## Creating an account type
+
+In the `POST` header, send
+
+```
+Authorization: Bearer ...Access Token contents...
+```
+
+In the `POST` body, send a JSON:
+
+```
+{"name": "new acct type",
+"equityType": false}
+```
+
+## Reading data
+
+`GET` http://localhost:8000/alexie/accounttypes/ with header
+
+```
+Authorization: Bearer ...Access Token contents...
+```
