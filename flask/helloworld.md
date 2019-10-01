@@ -25,7 +25,7 @@ The layout should be:
 6) `mkdir app`
 7) Create `__init__.py` in the `app` directory
 
-```
+```python
 # app/__init__.py
 
 import os
