@@ -23,8 +23,7 @@ The layout should be:
 4) `source venv/scripts/activate`
 5) `pip install flask`
 6) `mkdir app`
-7) `cd app`
-8) Create `__init__.py` in the `app` directory
+7) Create `__init__.py` in the `app` directory
 
 ```
 # app/__init__.py
@@ -53,6 +52,7 @@ def create_app():
     return app
 ```
 
-9) `export FLASK_APP=app`
-10) `export FLASK_ENV=development`
-11) `flask run`
+8) (in the top-level `project-name` directory) `export FLASK_APP=app`
+9) `export FLASK_ENV=development`
+10) `flask run`
+11) Go to `http://127.0.0.1:5000/hello`
