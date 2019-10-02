@@ -1,0 +1,17 @@
+https://nickjanetakis.com/blog/15-useful-flask-extensions-and-libraries-that-i-use-in-every-project
+
+gunicorn
+flask-debugtoolbar
+pytest
+pytest-cov (coverage)
+flake8 (consistency)
+Flask-SQLAlchemy
+psycopg2 (PostgreSQL)
+alembic (migrations)
+celery
+redis
+Flask-WTF
+Flask-WTForms-Components
+Flask-Login
+Flask-Limiter
+Flask-Mail
