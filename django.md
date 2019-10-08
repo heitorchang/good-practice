@@ -339,6 +339,7 @@ in settings, install accounts and add:
 ```
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 ```
 
 at the end
@@ -373,16 +374,12 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
     <!-- Header -->
     <div id="header">
         <div id="branding">
-        
-<h1 id="site-name"><a href="/admin/">Login</a></h1>
-
+            <h1 id="site-name"><a href="/">Login</a></h1>
         </div>
-        
-        
     </div>
 	
-	<div id="content-main">
-	  <center>
+    <div id="content-main">
+        <center>
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -391,13 +388,12 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
     {% if user.is_authenticated %}
     <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
     {% endif %}
 {% endif %}
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
+
 <table>
 <tr>
     <td>{{ form.username.label_tag }}</td>
@@ -409,12 +405,13 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
 </tr>
 </table>
 
-<input type="submit" value="login">
+<input type="submit" value="Login">
 <input type="hidden" name="next" value="{{ next }}">
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
 </center>
 </div>
 </body>
