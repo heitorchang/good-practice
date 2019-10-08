@@ -416,3 +416,14 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
 </div>
 </body>
 ```
+
+## Timezone
+
+When using a `DateTimeField` in a model's `__str__`, it must be converted to the local timezone manually.
+
+```
+from django.utils import timezone
+
+def format_time(t):
+    return timezone.localtime(t).strftime("%d/%m/%Y %H:%M")
+```
