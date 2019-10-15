@@ -332,6 +332,8 @@ path('', RedirectView.as_view(url="NEWURL/", permanent=False), name="siteindex")
 
 ## Creating a login page
 
+It seems that your apps need to be placed at the beginning of `INSTALLED_APPS`.
+
 `python manage.py startapp accounts`
 
 in settings, install accounts and add:
@@ -416,6 +418,8 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
 </div>
 </body>
 ```
+
+`password_change_form.html` and `password_change_done.html` should also be saved in `/accounts/templates/registration/` 
 
 ## Timezone
 
