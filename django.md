@@ -332,7 +332,7 @@ path('', RedirectView.as_view(url="NEWURL/", permanent=False), name="siteindex")
 
 ## Creating a login page
 
-It seems that your apps need to be placed at the beginning of `INSTALLED_APPS`.
+Your apps need to be placed at the beginning of `INSTALLED_APPS`, otherwise, the built-in templates will be loaded.
 
 `python manage.py startapp accounts`
 
