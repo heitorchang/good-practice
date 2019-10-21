@@ -49,7 +49,6 @@ runserver
 
 # Virtualenv
 
-env/
 venv/
 ```
 
