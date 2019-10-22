@@ -156,11 +156,11 @@ from .models import TodoItem
 
 
 class TodoItemSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
     
     class Meta:
         model = TodoItem
-        fields = ('id', 'owner', 'description')
+        fields = ('owner', 'description')
 ```
 
 ### Permissions
