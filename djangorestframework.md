@@ -156,11 +156,12 @@ from .models import TodoItem
 
 
 class TodoItemSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    # NOT NEEDED owner = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
     
     class Meta:
         model = TodoItem
         fields = ('owner', 'description')
+        extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from JS
 ```
 
 ### Permissions
