@@ -186,6 +186,34 @@ class IsOwner(permissions.BasePermission):
 ```python
 # APPNAME/views.py
 
+from rest_framework import generics
+from constantes.permissions import EDono
+from .models import Conta, Orcamento
+from .serializers import ContaSerializer, OrcamentoSerializer
+
+
+class ListaDeContas(generics.ListCreateAPIView):
+    serializer_class = ContaSerializer
+    permission_classes = (EDono,)
+
+    def get_queryset(self):
+        return Conta.objects.filter(usuario=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(usuario=self.request.user)
+
+
+class DetalheDeConta(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ContaSerializer
+    permission_classes = (EDono,)
+
+    def get_queryset(self):
+        return Conta.objects.filter(usuario=self.request.user)
+```
+
+```python
+# Old version
+
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from .models import TodoItem
