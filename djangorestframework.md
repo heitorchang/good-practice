@@ -160,7 +160,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = TodoItem
-        fields = ('owner', 'description')
+        fields = ('id', 'owner', 'description')
         extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from JS
 ```
 

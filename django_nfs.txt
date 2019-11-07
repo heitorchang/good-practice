@@ -49,4 +49,8 @@ Base URI /.well-known/
 Document Root /home/public/.well-known/
 Port: Anything (default 8080)
 
-12. Edir canonical URL settings to enable auto redirect to https
+12. Edit canonical URL settings to enable auto redirect to https
+
+13. Create secrets.py
+
+14. Add SITE.nfshost.com URL to ALLOWED_HOSTS
