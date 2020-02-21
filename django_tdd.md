@@ -27,6 +27,10 @@ cd virtualenvs
 
 `pip install "django>3" selenium`
 
+To install the current LTS version, run
+
+`pip install "django==2.2.*" selenium`
+
 ## Create an empty project directory
 
 In the `code` directory,
