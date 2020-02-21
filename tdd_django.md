@@ -14,7 +14,10 @@ Go to https://github.com/mozilla/geckodriver/releases and download the latest ve
 
 In your `code` (or other top-level) directory, run
 
-`cd virtualenvs`
+```
+mkdir virtualenvs
+cd virtualenvs
+```
 
 `python -m venv superlists`
 
@@ -22,9 +25,7 @@ In your `code` (or other top-level) directory, run
 
 ## Install packages in the virtualenv
 
-`pip install "django==2.2.*" selenium`
-
-Django 2.2 is a LTS release, supported until Apr 2022
+`pip install "django>3" selenium`
 
 ## Create an empty project directory
 
@@ -47,6 +48,10 @@ browser.get('http://127.0.0.1:8000')
 assert 'Django' in browser.title
 ```
 
+## Run the test
+
+`python functional_tests.py`
+
 ## Create a new Django project
 
 In the `superlists` directory, run
@@ -55,7 +60,7 @@ In the `superlists` directory, run
 
 Because of the dot at the end, the project will be created in the current directory.
 
-## Save the required packages
+## Save the installed packages
 
 `pip freeze > requirements.txt`
 
@@ -93,6 +98,16 @@ runserver
 makemigrations
 migrate
 ```
+
+## Start the development server and test again
+
+In one terminal, run in the top-level `superlists` directory:
+
+`python manage.py runserver`
+
+and in another (remember to activate the virtualenv),
+
+`python functional_tests.py`
 
 ## Create a Git repo and push
 
