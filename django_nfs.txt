@@ -33,7 +33,7 @@ gunicorn MY_PROJECT_NAME.wsgi
 
   - protocol: none
   - base URI: /images/
-  - Document root: /images/
+  - Document root: /home/public/images/
   - target port: 8080  (port does not matter for protocol: none)
   
 10. If needed, restart daemon in NFS admin site (such as when settings change)
