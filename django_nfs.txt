@@ -53,6 +53,8 @@ Port: Anything (default 8080)
 
 14. Edit canonical URL settings to enable auto redirect to https
 
-15. Create secrets.py
+15. Create mysecrets.py
 
 16. Add SITE.nfshost.com URL to ALLOWED_HOSTS
+
+17. python manage.py migrate
