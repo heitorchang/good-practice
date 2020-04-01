@@ -2,17 +2,11 @@
 
 The following steps create a REST API server for todo items. Authentication is handled with JWT.
 
-## virtualenv
-
-`python -m venv venvdrf`
-
-`source venvdrf/Scripts/activate`
-
 ## Python packages
 
 Most likely you will need to get past CORS restrictions while in development.
 
-`pip install` the following:
+In a virtualenv, `pip install` the following:
 
 ```
 django
@@ -24,17 +18,15 @@ djangorestframework-simplejwt
 
 ## Project structure
 
-`mkdir PROJECTNAME`
+Place the Django REST Framework project under a `server` directory, and the client HTML/CSS/JS under `client`.
 
-`cd PROJECTNAME`
-
-`git init`
-
-Create the `.gitignore` file:
+Alternatively, the API can be created in `api` or `backend`.
 
 ## .gitignore
 
 ```
+venv/
+
 # emacs
 \#*
 .\#*
@@ -71,7 +63,7 @@ yarn-error.log*
 
 # Generate the server (back-end)
 
-`django-admin.exe startproject server`
+`django-admin startproject server`
 
 ## Django settings
 
@@ -150,7 +142,6 @@ Then run `python manage.py makemigrations` and `python manage.py migrate`
 # APPNAME/serializers.py
 
 from rest_framework import serializers
-# from django.contrib.auth.models import User
 
 from .models import TodoItem
 
@@ -160,7 +151,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = TodoItem
-        fields = ('id', 'owner', 'description')
+        fields = '__all__'
         extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from client, Token is associated to User
 ```
 
@@ -286,7 +277,6 @@ urlpatterns = [
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-# from django.contrib.auth.models import User
 from .models import TodoItem
 
 
@@ -409,7 +399,7 @@ A JS client page can do
        });
 
      function addTodo(text, token) {
-       axios.post('http://127.0.0.1:8000/lists/todos/',
+       axios.post('http://127.0.0.1:8000/todos/todoitems/',
                   {text: text},
                   {headers: {
                     'Authorization': 'Bearer ' + token
@@ -426,7 +416,7 @@ A JS client page can do
 
 ## Reading data
 
-`GET` http://localhost:8000/alexie/accounttypes/ with header
+`GET` http://127.0.0.1:8000/todos/todoitems/ with header
 
 ```
 Authorization: Bearer ...Access Token contents...
