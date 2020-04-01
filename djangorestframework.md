@@ -186,34 +186,6 @@ class IsOwner(permissions.BasePermission):
 ```python
 # APPNAME/views.py
 
-from rest_framework import generics
-from constantes.permissions import EDono
-from .models import Conta, Orcamento
-from .serializers import ContaSerializer, OrcamentoSerializer
-
-
-class ListaDeContas(generics.ListCreateAPIView):
-    serializer_class = ContaSerializer
-    permission_classes = (EDono,)
-
-    def get_queryset(self):
-        return Conta.objects.filter(usuario=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(usuario=self.request.user)
-
-
-class DetalheDeConta(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ContaSerializer
-    permission_classes = (EDono,)
-
-    def get_queryset(self):
-        return Conta.objects.filter(usuario=self.request.user)
-```
-
-```python
-# Old version
-
 from rest_framework import generics, permissions
 # from django.contrib.auth.models import User
 from .models import TodoItem
@@ -233,9 +205,11 @@ class TodoItemList(generics.ListCreateAPIView):
 
 
 class TodoItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
     permission_classes = (IsOwner,)
+
+    def get_queryset(self):
+        return TodoItem.objects.filter(owner=self.request.user)
 ```
 
 ### Admin (optional)
@@ -373,48 +347,20 @@ password_confirm
 For example, this JS script in a plain HTML file registers `heitor`
 
 ```
+    <script src="axios.min.js"></script>
     <script>
-     async function postData(url = '', data = {}, token = '') {
-       const response = await fetch(url, {
-         method: 'POST',
-         mode: 'cors',
-         cache: 'no-cache',
-         credentials: 'omit',
-         headers: {
-           'Content-Type': 'application/json',
-           'Authorization': token
-         },
-         redirect: 'follow',
-         referrerPolicy: 'no-referrer',
-         body: JSON.stringify(data)
-       });
-       return await response.json();
-     }
-
-     postData('http://127.0.0.1:8000/accounts/register/',
-              {
-                username: 'heitortodo',
-                password: 'registering789',
-                password_confirm: 'registering789'
+     axios.post('http://127.0.0.1:8000/accounts/register/',
+                {
+                  username: 'axiosuser',
+                  password: 'registerax321',
+                  password_confirm: 'registerax321'
      })
-       .then((data) => {
-         console.log(data);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
-
-     postData('http://127.0.0.1:8000/token/',
-              {
-                username: 'heitortodo',
-                password: 'registering789',
-     })
-       .then((data) => {
-         console.log(data);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
     </script>
 ```
 
@@ -445,52 +391,36 @@ In the `POST` body, send a JSON:
 A JS client page can do
 
 ```
+    <script src="axios.min.js"></script>
     <script>
-     async function postData(url = '', data = {}, token = '') {
-       const response = await fetch(url, {
-         method: 'POST',
-         mode: 'cors',
-         cache: 'no-cache',
-         credentials: 'omit',
-         headers: {
-           'Content-Type': 'application/json',
-           'Authorization': token
-         },
-         redirect: 'follow',
-         referrerPolicy: 'no-referrer',
-         body: JSON.stringify(data)
-       });
-       return await response.json();
-     }
-
      let accessToken = "";
-     postData('http://127.0.0.1:8000/token/',
+     axios.post('http://127.0.0.1:8000/token/',
               {
-                username: 'heitortodo',
-                password: 'registering789',
+                username: 'axiosuser',
+                password: 'registerax321',
      })
-       .then((data) => {
-         console.log(data);
-         accessToken = 'Bearer ' + data.access;
-         addTodo(accessToken);
+       .then((response) => {
+         console.log(response.data);
+         accessToken = response.data.access;
+         addTodo("new axios todo", accessToken);
        })
        .catch((err) => {
-         console.log(err);
+         console.log(err.response.data);
        });
 
-     function addTodo(token) {
-       postData('http://127.0.0.1:8000/lists/todos/',
-                {
-                  text: "my new todo with token"
-       }, token)
-         .then((data) => {
-           console.log(data);
-         })
-         .catch((err) => {
-           console.log(err);
-         });
+     function addTodo(text, token) {
+       axios.post('http://127.0.0.1:8000/lists/todos/',
+                  {text: text},
+                  {headers: {
+                    'Authorization': 'Bearer ' + token
+       }})
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((err) => {
+              console.log(err.response.data);
+            })
      }
-     
     </script>
 ```
 
