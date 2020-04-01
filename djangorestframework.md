@@ -360,18 +360,9 @@ Now choose a front-end client (such as [React](https://github.com/heitorchang/go
 
 Use `Postman`, `curl`, `httpie`, etc.
 
-## REST Framework Simple JWT Authentication
-
-`POST` data (form-data) to `/token/` to get the access and refresh tokens
-
-```
-"username": "lois"
-"password": "rest1233"
-```
-
 ## REST Registration
 
-`POST` form-data to `/accounts/register/`
+`POST` form-data or JSON to `/accounts/register/`
 
 ```
 username
@@ -379,7 +370,64 @@ password
 password_confirm
 ```
 
-## Creating an account type
+For example, this JS script in a plain HTML file registers `heitor`
+
+```
+    <script>
+     async function postData(url = '', data = {}, token = '') {
+       const response = await fetch(url, {
+         method: 'POST',
+         mode: 'cors',
+         cache: 'no-cache',
+         credentials: 'omit',
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization': token
+         },
+         redirect: 'follow',
+         referrerPolicy: 'no-referrer',
+         body: JSON.stringify(data)
+       });
+       return await response.json();
+     }
+
+     postData('http://127.0.0.1:8000/accounts/register/',
+              {
+                username: 'heitortodo',
+                password: 'registering789',
+                password_confirm: 'registering789'
+     })
+       .then((data) => {
+         console.log(data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+
+     postData('http://127.0.0.1:8000/token/',
+              {
+                username: 'heitortodo',
+                password: 'registering789',
+     })
+       .then((data) => {
+         console.log(data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+    </script>
+```
+
+## REST Framework Simple JWT Authentication
+
+`POST` data (JSON and form-data work) to `/token/` to get the access and refresh tokens
+
+```
+"username": "lois"
+"password": "rest1233"
+```
+
+## Adding data
 
 In the `POST` header, send
 
@@ -392,6 +440,58 @@ In the `POST` body, send a JSON:
 ```
 {"name": "new acct type",
 "equityType": false}
+```
+
+A JS client page can do
+
+```
+    <script>
+     async function postData(url = '', data = {}, token = '') {
+       const response = await fetch(url, {
+         method: 'POST',
+         mode: 'cors',
+         cache: 'no-cache',
+         credentials: 'omit',
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization': token
+         },
+         redirect: 'follow',
+         referrerPolicy: 'no-referrer',
+         body: JSON.stringify(data)
+       });
+       return await response.json();
+     }
+
+     let accessToken = "";
+     postData('http://127.0.0.1:8000/token/',
+              {
+                username: 'heitortodo',
+                password: 'registering789',
+     })
+       .then((data) => {
+         console.log(data);
+         accessToken = 'Bearer ' + data.access;
+         addTodo(accessToken);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+
+     function addTodo(token) {
+       postData('http://127.0.0.1:8000/lists/todos/',
+                {
+                  text: "my new todo with token"
+       }, token)
+         .then((data) => {
+           console.log(data);
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+     }
+     
+    </script>
 ```
 
 ## Reading data
