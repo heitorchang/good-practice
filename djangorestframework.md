@@ -161,7 +161,7 @@ class TodoItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = TodoItem
         fields = ('id', 'owner', 'description')
-        extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from JS
+        extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from client, Token is associated to User
 ```
 
 ### Permissions
