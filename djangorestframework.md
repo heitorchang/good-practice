@@ -150,7 +150,7 @@ Then run `python manage.py makemigrations` and `python manage.py migrate`
 # APPNAME/serializers.py
 
 from rest_framework import serializers
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 from .models import TodoItem
 
@@ -215,7 +215,7 @@ class DetalheDeConta(generics.RetrieveUpdateDestroyAPIView):
 # Old version
 
 from rest_framework import generics, permissions
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .models import TodoItem
 from .serializers import TodoItemSerializer
 from .permissions import IsOwner
@@ -312,7 +312,7 @@ urlpatterns = [
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .models import TodoItem
 
 
