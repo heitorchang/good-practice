@@ -9,12 +9,13 @@ First, install Node.js
 Create a project directory and run
 
 ```
-git clone https://github.com/vuejs/vue-next-webpack-preview
+git clone https://github.com/vuejs/vue-next-webpack-preview PROJECT_DIR
+rm -f -r PROJECT_DIR/src
+mkdir PROJECT_DIR/src
+
 cd PROJECT_DIR
 npm i
 ```
-
-Remove the `src/` directory and make a new empty `src/` directory
 
 ## src/ files
 
