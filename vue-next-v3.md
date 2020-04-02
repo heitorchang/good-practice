@@ -23,8 +23,8 @@ npm i
 
 ```
 <template>
-    <button @click="inc">Inc</button>
-    <span>Button clicked {{ count }} times.</span>
+    <button @click="inc" id="btn_inc">Inc</button>
+    <span id="span_times">Button clicked {{ count }} times.</span>
 </template>
 
 <script>
@@ -53,9 +53,41 @@ import App from './App.vue';
 createApp(App).mount("#app");
 ```
 
-## Running the dev server
+## Running the dev server on port 8080
 
 `npm run dev`
+
+## Functional test with Python and Selenium
+
+With the dev server running, run this Python script
+
+**functional_tests.py**
+
+```
+import unittest
+from selenium import webdriver
+
+
+class ClickTest(unittest.TestCase):
+    def setUp(self):
+        self.browser = webdriver.Chrome()
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_click_three_times(self):
+        self.browser.get('http://127.0.0.1:8080/')
+
+        btn = self.browser.find_element_by_id("btn_inc")
+        for i in range(3):
+            btn.click()
+            
+        self.assertEqual('Button clicked 3 times.', self.browser.find_element_by_id("span_times").text)
+
+        
+if __name__ == '__main__':
+    unittest.main(warnings="ignore")
+```
 
 ## Deploying
 
@@ -67,3 +99,5 @@ Create a simple `index.html` file in `dist/`
 <div id="app"></div>
 <script src="main.js"></script>
 ```
+
+Deploy the `dist/` directory.
