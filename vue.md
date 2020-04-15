@@ -34,18 +34,6 @@ In Powershell, run
 
 `vue create myapp`
 
-Choose "manual" and select testing (Jest and Cypress)
-
-I chose the following:
-Babel, TypeScript, Linter, Unit testing, E2E testing
-Use class-style component syntax? Yes
-Use Babel with TS? Yes
-Standard Linter
-Lint on save
-Jest
-Cypress
-Save config in package.json
-
 # Vuetify
 
 To install, go to the app directory and run:
@@ -119,3 +107,14 @@ describe('AppHeader', () => {
   })
 })
 ```
+
+# Labeling and finding elements
+
+Instead of using `id`s, we can set the `data-testid` attribute in the template:
+
+`<input data-testid="name-input" type="text" v-model="name" />`
+
+and in the spec test:
+
+`const input = wrapper.find('[data-testid="name-input"]')`
+
