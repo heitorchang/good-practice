@@ -2,17 +2,11 @@
 
 The following steps create a REST API server for todo items. Authentication is handled with JWT.
 
-## virtualenv
-
-`python -m venv venvdrf`
-
-`source venvdrf/Scripts/activate`
-
 ## Python packages
 
 Most likely you will need to get past CORS restrictions while in development.
 
-`pip install` the following:
+In a virtualenv, `pip install` the following:
 
 ```
 django
@@ -24,17 +18,15 @@ djangorestframework-simplejwt
 
 ## Project structure
 
-`mkdir PROJECTNAME`
+Place the Django REST Framework project under a `server` directory, and the client HTML/CSS/JS under `client`.
 
-`cd PROJECTNAME`
-
-`git init`
-
-Create the `.gitignore` file:
+Alternatively, the API can be created in `api` or `backend`.
 
 ## .gitignore
 
 ```
+venv/
+
 # emacs
 \#*
 .\#*
@@ -71,7 +63,7 @@ yarn-error.log*
 
 # Generate the server (back-end)
 
-`django-admin.exe startproject server`
+`django-admin startproject server`
 
 ## Django settings
 
@@ -150,17 +142,17 @@ Then run `python manage.py makemigrations` and `python manage.py migrate`
 # APPNAME/serializers.py
 
 from rest_framework import serializers
-from django.contrib.auth.models import User
 
 from .models import TodoItem
 
 
 class TodoItemSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    # NOT NEEDED owner = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
     
     class Meta:
         model = TodoItem
-        fields = ('id', 'owner', 'description')
+        fields = '__all__'
+        extra_kwargs = {'owner': {'required': False}}  # Allows POSTing from client, Token is associated to User
 ```
 
 ### Permissions
@@ -186,7 +178,7 @@ class IsOwner(permissions.BasePermission):
 # APPNAME/views.py
 
 from rest_framework import generics, permissions
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .models import TodoItem
 from .serializers import TodoItemSerializer
 from .permissions import IsOwner
@@ -204,9 +196,11 @@ class TodoItemList(generics.ListCreateAPIView):
 
 
 class TodoItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TodoItem.objects.all()
     serializer_class = TodoItemSerializer
     permission_classes = (IsOwner,)
+
+    def get_queryset(self):
+        return TodoItem.objects.filter(owner=self.request.user)
 ```
 
 ### Admin (optional)
@@ -283,7 +277,6 @@ urlpatterns = [
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-from django.contrib.auth.models import User
 from .models import TodoItem
 
 
@@ -326,3 +319,105 @@ Run `python manage.py test`
 Run `python manage.py runserver`
 
 Now choose a front-end client (such as [React](https://github.com/heitorchang/good-practice/blob/master/react.md))
+
+## Testing
+
+Use `Postman`, `curl`, `httpie`, etc.
+
+## REST Registration
+
+`POST` form-data or JSON to `/accounts/register/`
+
+```
+username
+password
+password_confirm
+```
+
+For example, this JS script in a plain HTML file registers `heitor`
+
+```
+    <script src="axios.min.js"></script>
+    <script>
+     axios.post('http://127.0.0.1:8000/accounts/register/',
+                {
+                  username: 'axiosuser',
+                  password: 'registerax321',
+                  password_confirm: 'registerax321'
+     })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+    </script>
+```
+
+## REST Framework Simple JWT Authentication
+
+`POST` data (JSON and form-data work) to `/token/` to get the access and refresh tokens
+
+```
+"username": "lois"
+"password": "rest1233"
+```
+
+## Adding data
+
+In the `POST` header, send
+
+```
+Authorization: Bearer ...Access Token contents...
+```
+
+In the `POST` body, send a JSON:
+
+```
+{"name": "new acct type",
+"equityType": false}
+```
+
+A JS client page can do
+
+```
+    <script src="axios.min.js"></script>
+    <script>
+     let accessToken = "";
+     axios.post('http://127.0.0.1:8000/token/',
+              {
+                username: 'axiosuser',
+                password: 'registerax321',
+     })
+       .then((response) => {
+         console.log(response.data);
+         accessToken = response.data.access;
+         addTodo("new axios todo", accessToken);
+       })
+       .catch((err) => {
+         console.log(err.response.data);
+       });
+
+     function addTodo(text, token) {
+       axios.post('http://127.0.0.1:8000/todos/todoitems/',
+                  {text: text},
+                  {headers: {
+                    'Authorization': 'Bearer ' + token
+       }})
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((err) => {
+              console.log(err.response.data);
+            })
+     }
+    </script>
+```
+
+## Reading data
+
+`GET` http://127.0.0.1:8000/todos/todoitems/ with header
+
+```
+Authorization: Bearer ...Access Token contents...
+```

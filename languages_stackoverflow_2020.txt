@@ -1,0 +1,27 @@
+Languages you worked with in 2019
+
+Assembly
+Bash, Shell
+C
+C#
+C++
+Dart
+Go
+Haskell
+HTML, CSS
+Java
+JavaScript
+Julia
+Kotlin
+Objective-C
+Perl
+PHP
+Python
+R
+Ruby
+Rust
+Scala
+SQL
+Swift
+TypeScript
+VBA

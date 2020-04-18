@@ -15,12 +15,14 @@ Installing and running Django on NearlyFreeSpeech
 source /home/protected/virtualenv/bin/activate
 gunicorn MY_PROJECT_NAME.wsgi
 
-7. add daemon in NFS members' admin site
+8. chmod 700 run-django.sh
+
+9. add daemon in NFS members' admin site
   - tag: django
   - command line: /home/protected/MY_PROJECT/run-django.sh
   - working directory: /home/protected/MY_PROJECT/
 
-8. add a proxy
+10. add a proxy
   - protocol: http
   - base URI: /
   - Document Root: /
@@ -28,17 +30,17 @@ gunicorn MY_PROJECT_NAME.wsgi
   - Direct (bypass Apache entirely) if checked, Django handles the entire site
       if checked, it's faster and scales better
 
-9. exclude (say) /images/ directory by leaving Direct unchecked and adding
+11. exclude (say) /images/ directory by leaving Direct unchecked and adding
    another proxy. An images/ directory should be created in /home/public/
 
   - protocol: none
   - base URI: /images/
-  - Document root: /images/
+  - Document root: /home/public/images/
   - target port: 8080  (port does not matter for protocol: none)
   
-10. If needed, restart daemon in NFS admin site (such as when settings change)
+12. If needed, restart daemon in NFS admin site (such as when settings change)
 
-11. Let's encrypt
+13. Let's encrypt
 
 Looks like the tls-setup.sh script creates a .well-known folder in /home/public/. it must be reachable through http port 80
 
@@ -49,4 +51,10 @@ Base URI /.well-known/
 Document Root /home/public/.well-known/
 Port: Anything (default 8080)
 
-12. Edir canonical URL settings to enable auto redirect to https
+14. Edit canonical URL settings to enable auto redirect to https
+
+15. Create mysecrets.py
+
+16. Add SITE.nfshost.com URL to ALLOWED_HOSTS
+
+17. python manage.py migrate
