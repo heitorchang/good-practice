@@ -35,7 +35,7 @@ venv/
 __pycache__
 
 # django
-secrets.py
+mysecrets.py
 db.sqlite3
 
 # if using react 
@@ -72,8 +72,8 @@ Add to `settings.py`:
 ```python
 # server/server/settings.py
 
-# Save SECRET_KEY to secrets.py (hidden through .gitignore)
-from .secrets import SECRET_KEY 
+# Save SECRET_KEY to mysecrets.py (hidden through .gitignore)
+from .mysecrets import SECRET_KEY 
 
 ...
 

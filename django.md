@@ -14,10 +14,10 @@ django-admin startproject mysite
 
 To save required packages, run `pip freeze > requirements.txt`
 
-* hide the secret key in a file `secrets.py` and import it in `settings.py`
+* hide the secret key in a file `mysecrets.py` and import it in `settings.py`. There is a Python module named `secrets`, so use the name `mysecrets`
 
 ```
-from .secrets import SECRET_KEY
+from .mysecrets import SECRET_KEY
 ```
 
 * In the new project, create a .gitignore file with:
@@ -39,7 +39,7 @@ __pycache__/
 
 # Django
 
-secrets.py
+mysecrets.py
 db.sqlite3
 
 # touch these filenames so that they may be tab-completed
