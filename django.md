@@ -33,6 +33,7 @@ from .secrets import SECRET_KEY
 # Python
 
 # Byte-compiled / optimized / DLL files
+*.pyc
 __pycache__/
 
 
