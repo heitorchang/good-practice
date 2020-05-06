@@ -17,3 +17,19 @@ Install `clojure-mode` and `cider`
 In a shell, run `lein.bat new PROJECT_NAME`
 
 Open `project.clj`, then `M-x cider-j` (cider-jack-in)
+
+Add to `.emacs`
+
+```
+(add-hook 'cider-repl-mode-hook
+          (lambda ()
+            (auto-complete-mode 1)))
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (auto-complete-mode 1)
+            (define-key clojure-mode-map (kbd "<M-left>") 'backward-sexp)
+            (define-key clojure-mode-map (kbd "<M-right>") 'forward-sexp)
+            (define-key clojure-mode-map (kbd "<C-return>") 'my-cider-save-and-compile-buffer)
+            (local-set-key (kbd "<S-return>") 'cider-eval-last-sexp)))
+```
