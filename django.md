@@ -98,7 +98,7 @@ def create_default_tipos(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('todolist', '0001_initial'),
+        ('todolist', '0001_initial'),  # only if this file was already created
     ]
 
     operations = [
