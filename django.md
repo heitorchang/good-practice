@@ -431,3 +431,11 @@ from django.utils import timezone
 def format_time(t):
     return timezone.localtime(t).strftime("%d/%m/%Y %H:%M")
 ```
+
+# Test coverage
+
+Using `cookiecutter gh:feldroy/django-crash-startee`
+
+Run `coverage run -m pytest`
+
+Then `coverage report`
