@@ -30,6 +30,8 @@ Run `pip install -r requirements/local.txt`
 
 ## Adjust settings
 
+Add `*secrets.py` to `.gitignore`
+
 Create a file `mysecrets.py` in `config/settings`.
 
 In `mysecrets.py`, add
@@ -41,7 +43,7 @@ LOCAL_DATABASE_URL = "postgres://postgres:PASSWORD@localhost:5432/PROJECTNAME"
 In `config/settings/base.py`, add
 
 ```
-from mysecrets import LOCAL_DATABASE_URL
+from .mysecrets import LOCAL_DATABASE_URL
 
 # ...
     "default": env.db(
@@ -49,3 +51,6 @@ from mysecrets import LOCAL_DATABASE_URL
     )
 ```
 
+Test the setup
+
+`python manage.py runserver`
