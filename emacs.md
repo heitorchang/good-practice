@@ -24,3 +24,14 @@ There are two things you can do about this warning:
 ```
 
 Run `M-x package-refresh-contents` or `M-x package-list-packages`
+
+# Home directory
+
+To redefine ~, add to `.emacs`
+
+```
+;; old value is "c:/Users/neo/AppData/Roaming/"
+(setenv "HOME" "c:/Users/neo/")
+```
+
+Note that to update `.emacs`, you need to type the old directory's name
