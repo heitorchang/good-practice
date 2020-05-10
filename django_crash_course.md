@@ -161,6 +161,8 @@ def test_OBJECT_FUNCTION():
 
 ## Using the built-in admin site
 
+(Chapter 31)
+
 Create a superuser
 
 `python manage.py createsuperuser`
@@ -175,3 +177,76 @@ from .models import OBJECT, OBJECT2
 
 admin.site.register([OBJECT1, OBJECT2])
 ```
+
+# Class-Based Views
+
+(Chapter 33)
+
+## List View
+
+(Chapter 34)
+
+```
+from django.views.generic import ListView, DetailView
+
+from .models import OBJECT
+
+
+class OBJECTListView(ListView):
+    model = OBJECT
+```
+
+## Define OBJECT URL Patterns
+
+```
+# PROJECTNAME/APPNAME/urls.py
+
+from django.urls import path
+from . import views
+
+
+app_name = "APPNAME"
+
+urlpatterns = [
+    path(
+        route='',
+        view=views.OBJECTListView.as_view(),
+        name='list'
+    ),
+]
+```
+
+Include APPNAME/urls.py in the root URLConf
+
+Add to `config/urls.py`
+
+```
+# Your stuff: custom urls includes go here
+path(
+    'APPNAME/',
+    include('PROJECTNAME.APPNAME.urls', namespace='APPNAME'),
+),
+```
+
+## Add the List template
+
+Create the directory 'PROJECTNAME/templates/APPNAME'
+
+In this directory, create 'OBJECT_list.html'
+
+```
+{% extends "base.html" %}
+
+{% block title %}APPNAME List{% endblock title %}
+
+{% block content %}
+<h2>OBJECT List</h2>
+
+<ul>
+  {% for OBJECT in OBJECT_list %}
+    <li>{{ OBJECT.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
+```
+
