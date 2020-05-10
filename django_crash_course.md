@@ -230,6 +230,8 @@ path(
 
 ## Add the List template
 
+(Chapter 36)
+
 Create the directory 'PROJECTNAME/templates/APPNAME'
 
 In this directory, create 'OBJECT_list.html'
@@ -250,3 +252,68 @@ In this directory, create 'OBJECT_list.html'
 {% endblock content %}
 ```
 
+## Add the Detail view
+
+(Chapter 37)
+
+Add to APPNAME/views.py:
+
+```
+class OBJECTDetailView(DetailView):
+    model = OBJECT
+```
+
+Add the URL path to APPNAME/urls.py
+
+```
+path(
+    route='<slug:slug>/',
+    view=views.OBJECTDetailView.as_view(),
+    name='detail'
+),
+
+Add a template (Chapter 38)
+
+```
+{% extends "base.html" %}
+
+{% block title %}OBJECTS: {{ OBJECT.name }}{% endblock title %}
+
+{% block content %}
+
+<h2>{{ OBJECT.name }}</h2>
+
+<p>
+  {{ OBJECT.description }}
+</p>
+{% endblock content %}
+```
+
+## Accessing a many-to-many field in templates
+
+Suppose your models are:
+
+```
+class ProductCategory(models.Model):
+    name = TextField()
+
+class Product(models.Model):
+    name = TextField()
+    category = models.ManyToManyField(ProductCategory)
+```
+
+In the ProductCategory template, write
+
+```
+{% for product in productcategoy.product_set.all %}
+  {{ product.name }}
+{% endfor %}
+```
+
+In the Product template, write
+
+```
+{% for category in product.category.all %}
+  {{ category.name }}</a>
+{% endfor %}
+```
