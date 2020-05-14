@@ -317,3 +317,7 @@ In the Product template, write
   {{ category.name }}</a>
 {% endfor %}
 ```
+
+## Writing factories for tests
+
+Factory Boy is a third-party library that generates test data
