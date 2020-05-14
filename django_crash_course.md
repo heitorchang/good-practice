@@ -320,4 +320,6 @@ In the Product template, write
 
 ## Writing factories for tests
 
+(Chapter 40)
+
 Factory Boy is a third-party library that generates test data
