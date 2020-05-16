@@ -38,3 +38,5 @@ plugins:
 ## Building
 
 Run `mkdocs build` then serve the `site/` directory.
+
+For offline use, add `use_directory_urls: false` to `mkdocs.yml` because offline navigation will not automatically load `index.html`
