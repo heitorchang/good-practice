@@ -40,3 +40,15 @@ plugins:
 Run `mkdocs build` then serve the `site/` directory.
 
 For offline use, add `use_directory_urls: false` to `mkdocs.yml` because offline navigation will not automatically load `index.html`
+
+## Themes
+
+`pip install mkdocs-bootswatch` to get several new themes.
+
+[See previews here](https://mkdocs.github.io/mkdocs-bootswatch/)
+
+Add to `mkdocs.yml`
+
+```
+theme: spacelab
+```
