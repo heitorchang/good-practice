@@ -5,7 +5,7 @@
 ```
 HOST = "127.0.0.1"
 PORT = "5432"
-DATABASE = "cemaden"
+DATABASE = "mydatabase"
 USER = "heitor"
 PASSWORD = "supersecret"
 
@@ -14,7 +14,7 @@ DSN = f"host={HOST} port={PORT} dbname={DATABASE} user={USER} password={PASSWORD
 
 ## Connecting
 
-Columns are accessed by index (integer):
+To access columns by index (integer):
 
 ```
 with psycopg2.connect(DSN) as conn:
@@ -22,7 +22,7 @@ with psycopg2.connect(DSN) as conn:
         # do something
 ```
 
-Columns are accessed as dictionary keys:
+To access columns as dictionary keys:
 
 ```
 with psycopg2.connect(DSN) as conn:
@@ -63,19 +63,15 @@ with psycopg2.connect(DSN) as conn:
 
 ```
 cur.execute("""
-INSERT INTO station (name, city, state, lat, lon, provider_acronym, basin, ref, provider_id)
-VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-ON CONFLICT (provider_id, ref) DO NOTHING
+INSERT INTO station (name, city, state, lat, lon)
+VALUES (%s, %s, %s, %s, %s)
+ON CONFLICT (name, city, state) DO NOTHING
 """, (
     s['name'],
     s['city'],
     s['state'],
     s['lat'],
     s['lon'],
-    s['provider_acronym'],
-    s['basin'],
-    s['ref'],
-    s['provider_id']
 ))
 ```
 
@@ -85,13 +81,13 @@ ON CONFLICT (provider_id, ref) DO NOTHING
     from psycopg2.extras import execute_batch
 
     sql = """
-        INSERT INTO rainfall (station, when_measured, mm)
+        INSERT INTO rainfall (station, observation_time, mm)
             VALUES (%s, %s, %s)
-            ON CONFLICT (station, when_measured) DO
+            ON CONFLICT (station, observation_time) DO
                 UPDATE SET mm = %s, updated = %s
     """
 
-    rows = [(r.station, r.when_measured, r.mm, r.mm, insert_datetime_now) for r in py_obj_list]
+    rows = [(r.station, r.observation_time, r.mm, r.mm, insert_datetime_now) for r in py_obj_list]
 
     # inside with block
     
