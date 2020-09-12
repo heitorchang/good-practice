@@ -1,0 +1,10 @@
+even after installing with sudo mysql_secure_installation, only sudo mysql -u root -p will work. Without sudo, it will not allow a login
+
+after logged in,
+
+create user 'myuser'@'localhost' identified by 'ComplexPassword123$%';
+
+grant all privileges on *.* to 'myuser'@'localhost';
+
+
+
