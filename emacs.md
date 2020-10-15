@@ -35,3 +35,13 @@ To redefine ~, add to `.emacs`
 ```
 
 Note that to update `.emacs`, you need to type the old directory's name
+
+# Theme
+
+`M-x load-theme`
+
+`M-x customize-create-theme`
+
+# Return to point where substitutions was called
+
+After substituting text with `M-%`, type `C-u C-SPC` to return to the initial point.
