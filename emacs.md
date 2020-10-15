@@ -38,6 +38,8 @@ Note that to update `.emacs`, you need to type the old directory's name
 
 # Theme
 
+For default background, change (custom-set-faces '(default ...)) instead of the theme.
+
 `M-x load-theme`
 
 `M-x customize-create-theme`
