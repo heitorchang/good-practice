@@ -56,3 +56,10 @@ List tables, views, sequences
 `\d`
 
 `\d "Tablename"`
+
+See column names
+
+select column_name from information_schema.columns
+where table_schema = 'public'
+and table_name = 'mytable'
+order by column_name

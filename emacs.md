@@ -47,3 +47,13 @@ For default background, change (custom-set-faces '(default ...)) instead of the 
 # Return to point where substitutions was called
 
 After substituting text with `M-%`, type `C-u C-SPC` to return to the initial point.
+
+Load them in .emacs
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; ...
+ '(custom-enabled-themes (quote (my-tango)))
+ ;; ...
+)
