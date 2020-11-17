@@ -35,3 +35,7 @@ Revert non-committed changes: `git restore my_file`
 Unstage: `git restore --staged my_file`
 
 Log: `git log --oneline`
+
+To clear the credential cache:
+
+`git credential-cache exit`
