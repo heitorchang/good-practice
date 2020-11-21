@@ -16,6 +16,14 @@ In Windows, `~/.psqlrc` is
 
 `c:/Users/USERNAME/AppData/Roaming/postgresql/psqlrc.conf`
 
+## psql REPL
+
+Create a new database and user
+
+`create database artofpsql;`
+`create user dimitri with encrypted password 'mysecret';`
+`grant all privileges on database artofpsql to dimitri;`
+
 ## psqlrc
 
 ```
