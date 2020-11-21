@@ -18,11 +18,19 @@ In Windows, `~/.psqlrc` is
 
 ## psql REPL
 
+Save password instead of typing it interactively
+
+`export PGPASSWORD=secret`
+
 Create a new database and user
 
 `create database artofpsql;`
 `create user dimitri with encrypted password 'mysecret';`
 `grant all privileges on database artofpsql to dimitri;`
+
+Run a file
+
+`psql -f filename.sql`
 
 ## psqlrc
 
