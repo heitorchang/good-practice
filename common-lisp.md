@@ -10,9 +10,11 @@ To enable a more complete backtrace, evaluate in the beginning:
 
 `(declaim (optimize (speed 0) (space 0) (debug 3)))`
 
+Add the above line to ~/.sbclrc, optionally add `(format t "Debug set to 3")`
+
 `ba` print backtrace
 
-`top` return to top level
+`top` returns to top level
 
 ## CGI
 
