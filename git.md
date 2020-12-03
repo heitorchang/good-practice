@@ -17,7 +17,7 @@ List branches: `git branch -a`
 To avoid Git from copying the whole repo after branching,
 run right before the push: `git fetch origin master`
 
-Delete local branch: `git branch -d my_branch`
+Delete local branch: `git branch --delete my_branch`
 
 Delete remote branch: `git push origin --delete my_branch`
 or: `git push -d origin my_branch`
