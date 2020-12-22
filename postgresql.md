@@ -79,3 +79,13 @@ select column_name from information_schema.columns
 where table_schema = 'public'
 and table_name = 'mytable'
 order by column_name
+
+## Users
+
+peer authentication refers to the operating system's current user
+
+To alter a login's password:
+
+enter the `psql` command-line tool
+
+`alter user tina with encrypted password 'mobliz';`
