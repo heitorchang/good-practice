@@ -8,3 +8,11 @@ import pandas as pd
 import seaborn as sns
 import statsmodels as sm
 
+from pandas import Series, DataFrame
+
+## Plotting
+
+import matplotlib.pyplot as plt
+
+pt.plot(...)
+plt.savefig('/path/to/file.png')
