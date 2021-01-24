@@ -16,3 +16,7 @@ import matplotlib.pyplot as plt
 
 pt.plot(...)
 plt.savefig('/path/to/file.png')
+
+np.nan
+
+from numpy import nan as NA
