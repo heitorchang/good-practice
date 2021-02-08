@@ -89,3 +89,17 @@ To alter a login's password:
 enter the `psql` command-line tool
 
 `alter user tina with encrypted password 'mobliz';`
+
+## CRUD
+
+insert into users (name, age) values
+('tina', 23),
+('joe', 33)
+
+select * from users where name like '%tina%';
+
+*Hint*: before executing an UPDATE or DELETE, write a SELECT statement first to ensure the returned rows are exactly the rows to be changed.
+
+update users set age = 25 where name = 'tina';
+
+delete from users where name = 'joe';  
