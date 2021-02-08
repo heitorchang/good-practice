@@ -118,3 +118,76 @@ and in the spec test:
 
 `const input = wrapper.find('[data-testid="name-input"]')`
 
+# Vue 2 refs
+
+In order to call instance methods from the console, refs may be used.
+
+Main HTML:
+
+```
+        <div id="myrefsApp">
+            <myrefs-dashboard ref="mydashboard"></myrefs-dashboard>
+        </div>
+
+        <script>
+         const myrefsApp = new Vue({
+           el: "#myrefsApp",
+         });
+        </script>
+```
+
+dashboard.js
+
+```
+Vue.component('myrefs-dashboard', {
+  delimiters: ['{(', ')}'],
+  template: `
+      <div>
+          Dashboard
+          <br>
+          <myrefs-chart ref="mychart"></myrefs-chart>
+      </div>
+  `,
+  data() {
+    return {
+      name: "Dashboard",
+    }
+  },
+  methods: {
+    sayHi() {
+      console.log("Dashboard says hi");
+    }
+  }
+});
+```
+
+chart.js
+
+```
+Vue.component('myrefs-chart', {
+  delimiters: ['{(', ')}'],
+  template: `
+      <div>
+          Chart
+      </div>          
+  `,
+  data() {
+    return {
+      name: "chart",
+    }
+  },
+  methods: {
+    sayHi() {
+      console.log("Chart says hi");
+    }
+  },
+});
+```
+
+in the console:
+
+```
+myrefsApp.$refs.mydashboard.$refs.mychart.sayHi()
+
+myrefsApp.$refs.mydashboard.$refs.mychart.name
+```
