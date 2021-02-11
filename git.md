@@ -34,8 +34,17 @@ Revert non-committed changes: `git restore my_file`
 
 Unstage: `git restore --staged my_file`
 
+To reset master to be the same as remote:
+
+`git reset --hard origin/master`
+
+To make a local copy of a remote branch:
+
+`git checkout branch_name`
+
 Log: `git log --oneline`
 
 To clear the credential cache:
 
 `git credential-cache exit`
+
