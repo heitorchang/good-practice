@@ -349,6 +349,10 @@ at the end
 in `PROJECT/urls.py` add:
 
 ```
+from django.urls import path, include
+
+...
+
     path('accounts/', include('django.contrib.auth.urls')),
 ```
 
@@ -416,10 +420,12 @@ copy the login template from https://docs.djangoproject.com/en/2.2/topics/auth/d
 
 </center>
 </div>
+</div>
 </body>
+</html>
 ```
 
-`password_change_form.html` and `password_change_done.html` should also be saved in `/accounts/templates/registration/` 
+`password_change_form.html` and `password_change_done.html` should also be saved in `/accounts/templates/registration/` (find in Django source /contrib/admin/templates/registration/)
 
 ## Timezone
 
