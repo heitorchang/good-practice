@@ -458,3 +458,48 @@ class SimpleTests(SimpleTestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 ```
+
+# Permissions to view restricted pages
+
+According to [Paulo](https://stackoverflow.com/questions/33086777/set-user-permissions-for-specific-views-in-django), groups may be used instead of permissions (which are linked to models).
+
+Place group membership tests in a dedicated file (such as `permissions/permtests.py`) and then use a decorator to apply the test:
+
+```
+def must_be_supervisor(user):
+    return user.groups.filter(name='Supervisors').exists()
+
+@user_passes_test(must_be_supervisor)
+def quarter_report(request):
+    pass
+```
+
+# Template tags to conditionally show links on homepage
+
+Create `APP_DIR/templatetags/user_tags.py`:
+
+```
+from django import template
+
+
+register = template.Library()
+
+@register.filter(name="tem_grupo")
+def tem_grupo(user, group_name):
+    return user.groups.filter(name=group_name).exists()
+```
+
+In the template:
+
+```
+{% load user_tags %}
+
+{% if request.user|tem_grupo:"mapas" %}
+<a href="/mapas/">Mapas</a>
+{% endif %}
+
+{% if request.user.is_superuser %}
+<a href="/admin/">Admin</a>
+{% endif %}
+```
+
