@@ -503,3 +503,7 @@ In the template:
 {% endif %}
 ```
 
+# Testing at class level
+
+(Django for Professionals Ch. 5)
+`setUpTestData()` allows the creation of initial data at the class level.

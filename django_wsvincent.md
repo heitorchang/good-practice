@@ -57,7 +57,7 @@ Ch. 6
 
 STATICFILES_DIRS defines the location of static files in local development.
 
-STATIC_ROOT is the location of static files for production (collectstatic will complie all files across the project)
+STATIC_ROOT is the location of static files for production (collectstatic will compile all files across the project)
 
 ```
 STATIC_URL = '/static/'
