@@ -1,0 +1,16 @@
+to encrypt:
+
+go to the plaintext/ directory and run
+
+gpg --symmetric --armor --cipher-algo aes256 -o ../encrypted/usuarios.txt.gpg usuarios.txt
+
+* note that usuarios.txt (the original file) comes last
+
+to decrypt:
+
+go to the encrypted directory
+
+gpg -d usuarios.txt.gpg > ../plaintext/usuarios.txt
+
+
+Write a password hint at the top of the encrypted file
