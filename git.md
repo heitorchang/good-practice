@@ -42,6 +42,10 @@ To make a local copy of a remote branch:
 
 `git checkout branch_name`
 
+To copy a file from another branch (merge partially):
+
+`git checkout other_branch_name path/to/file_name`
+
 Log: `git log --oneline`
 
 To clear the credential cache:
