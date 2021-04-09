@@ -14,6 +14,8 @@ New branch: `git checkout -b new_feature`
 
 List branches: `git branch -a`
 
+Compare branches: `git diff brancha..branchb`
+
 To avoid Git from copying the whole repo after branching,
 run right before the push: `git fetch origin master`
 
