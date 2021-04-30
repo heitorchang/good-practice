@@ -58,3 +58,15 @@ Port: Anything (default 8080)
 16. Add SITE.nfshost.com URL to ALLOWED_HOSTS
 
 17. python manage.py migrate
+
+18. static files:
+
+  - add to settings.py: STATIC_ROOT = '/home/public/static'
+  - run python manage.py collectstatic
+
+19. make a new proxy for static/
+
+  - protocol: none
+  - base URI: /images/
+  - Document root: /home/public/images/
+  - target port: 8080  (port does not matter for protocol: none)
