@@ -16,6 +16,8 @@ List branches: `git branch -a`
 
 Compare branches: `git diff brancha..branchb`
 
+Compare file status between branches: `git diff --name-status brancha..branchb`
+
 To avoid Git from copying the whole repo after branching,
 run right before the push: `git fetch origin master`
 
@@ -42,6 +44,7 @@ To reset master to be the same as remote:
 
 To make a local copy of a remote branch:
 
+`git fetch --all`
 `git checkout branch_name`
 
 To copy a file from another branch (merge partially):

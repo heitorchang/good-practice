@@ -2,9 +2,35 @@ even after installing with sudo mysql_secure_installation, only sudo mysql -u ro
 
 after logged in,
 
-create user 'myuser'@'localhost' identified by 'ComplexPassword123$%';
+create user 'myuser'@'localhost' identified with mysql_native_password by 'ComplexPassword123$%';
 
 grant all privileges on *.* to 'myuser'@'localhost';
 
 
+Resetting root password:
+
+sudo /etc/init.d/mysql stop
+
+check if /var/run/mysqld exists. if not:
+
+sudo mkdir /var/run/mysqld
+
+sudo chown mysql /var/run/mysqld
+
+sudo mysqld_safe --skip-grant-tables
+
+sudo mysql --user=root mysql
+
+For MySQL 8, inside mysql:
+
+update mysql.user set authentication_string=null where User='root';
+flush privileges;
+alter user 'root'@'localhost' identified with mysql_native_password by 'SuperSecretPassword';
+flush privileges;
+exit
+
+sudo killall -u mysql
+sudo /etc/init.d/mysql start
+
+sudo mysql -u root -p
 
