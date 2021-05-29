@@ -5,6 +5,10 @@
 ```
 python -m venv venvdjango
 
+# OR #
+
+python3.9 -m venv venvdjango
+
 source venvdjango/Scripts/activate
 
 pip install Django
