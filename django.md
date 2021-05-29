@@ -11,6 +11,8 @@ python3.9 -m venv venvdjango
 
 source venvdjango/Scripts/activate
 
+pip install --upgrade pip
+pip install wheel
 pip install Django
 
 django-admin startproject mysite
