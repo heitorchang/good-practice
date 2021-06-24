@@ -1,0 +1,29 @@
+Opening the terminal and switching back-and-forth
+-------------------------------------------------
+Press Ctrl + K then still holding down Ctrl, press S to open the keyboard shortcuts screen
+
+Type ctrl+q, right-click the keybinding to remove it.
+
+Type terminal.toggleTerminal
+
+Set the keybinding for terminal.toggleTerminal to be Ctrl + q
+
+
+Sending text to the terminal
+----------------------------
+type ctrl+d to remove the existing binding.
+
+right-click on the existing binding and remove it.
+
+type terminal.run to show:
+
+runSelectedText = make it Ctrl+d
+
+
+Using the above settings
+------------------------
+Run the interpreter in the terminal (Python, Octave, etc.)
+
+Press Ctrl+q to switch back-and-forth
+
+Press Ctrl+a then Ctrl+d to run the script.
