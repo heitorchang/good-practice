@@ -17,7 +17,7 @@ right-click on the existing binding and remove it.
 
 type terminal.run to show:
 
-runSelectedText = make it Ctrl+d
+runSelectedText = make it Ctrl+Shift+d
 
 
 Using the above settings
@@ -26,7 +26,7 @@ Run the interpreter in the terminal (Python, Octave, etc.)
 
 Press Ctrl+q to switch back-and-forth
 
-Press Ctrl+a then Ctrl+d to run the script.
+Press Ctrl+a then Ctrl+Shift+d to run the script.
 
 
 Custom keyboard shortcuts
