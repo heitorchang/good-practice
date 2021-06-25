@@ -27,3 +27,17 @@ Run the interpreter in the terminal (Python, Octave, etc.)
 Press Ctrl+q to switch back-and-forth
 
 Press Ctrl+a then Ctrl+d to run the script.
+
+
+Custom keyboard shortcuts
+-------------------------
+
+Remove:
+
+Move line up/down (Alt + Up, Alt + Down). They conflict with Emacs shortcut to switch panes
+
+
+Edit:
+
+View: Focus Above Editor : Alt + Up
+View: Focus Below Editor : Alt + Down

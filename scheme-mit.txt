@@ -1,0 +1,4 @@
+MIT/GNU Scheme
+
+To exit the debugger (when an error occurs), use C-c C-c as an alternative to (restart 1) 
+
