@@ -41,3 +41,5 @@ Edit:
 
 View: Focus Above Editor : Alt + Up
 View: Focus Below Editor : Alt + Down
+
+Toggle Block Comment: Ctrl+Shift+/
