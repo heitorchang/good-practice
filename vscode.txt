@@ -1,3 +1,9 @@
+General notes
+-------------
+* jump back after search and replace: Ctrl + Alt + - (hyphen)
+* when doing search and replace, press F3 to skip to the next occurrence
+
+
 Opening the terminal and switching back-and-forth
 -------------------------------------------------
 Press Ctrl + K then still holding down Ctrl, press S to open the keyboard shortcuts screen
@@ -43,3 +49,5 @@ View: Focus Above Editor : Alt + Up
 View: Focus Below Editor : Alt + Down
 
 Toggle Block Comment: Ctrl+Shift+/
+
+
