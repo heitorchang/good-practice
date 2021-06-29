@@ -53,6 +53,10 @@ To copy a file from another branch (merge partially):
 
 Log: `git log --oneline`
 
+To save credentials in a cache for 8 hours (28800 seconds)
+
+`git config credential.helper 'cache --timeout=28800'`
+
 To clear the credential cache:
 
 `git credential-cache exit`
