@@ -1,5 +1,7 @@
 # Django for Professionals
 
+* Remember to use a custom user (see wsvincent django for professionals)
+
 Ch. 3
 
 Using Ubuntu 20

@@ -1,5 +1,7 @@
 # Django 2.2.2
 
+* Remember to use a custom user (see wsvincent django for professionals)
+
 * Create a virtualenv
 
 ```
