@@ -16,6 +16,10 @@ Add the above line to ~/.sbclrc, optionally add `(format t "Debug set to 3")`
 
 `top` returns to top level
 
+#### Restarting from a specific frame (SLIME debugger, sldb)
+
+If the error was caused by an invalid user input, place the cursor above the right frame and press `r`.
+
 ## CGI
 
 (from nearlyfreespeech forums)
