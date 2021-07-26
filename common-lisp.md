@@ -30,3 +30,37 @@ If the error was caused by an invalid user input, place the cursor above the rig
 (format t "<h1>Hello</h1>")
 
 Save as filename.cgi and chmod 755 filename.cgi
+
+## Hunchentoot
+
+First, install Quicklisp
+
+`curl -O https://beta.quicklisp.org/quicklisp.lisp`
+
+`sbcl --load quicklisp.lisp`
+
+`* (quicklisp-quickstart:install)`
+
+Add to `~/.sbclrc`:
+
+```
+(load "/home/heitor/quicklisp/setup.lisp")
+```
+
+In the REPL, type:
+
+`(ql:quickload 'hunchentoot)`
+
+### To start a server
+
+Create an acceptor:
+
+`(defparameter *acceptor* (make-instance 'hunchentoot:easy-acceptor :port 4242))`
+
+Start serving:
+
+`(hunchentoot:start *acceptor*)`
+
+Stop serving:
+`(hunchentoot:stop *acceptor*)`
+
