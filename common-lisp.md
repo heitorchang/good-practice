@@ -24,10 +24,12 @@ If the error was caused by an invalid user input, place the cursor above the rig
 
 (from nearlyfreespeech forums)
 
+```
 #!/usr/local/bin/sbcl
 
 (format t "Content-type: text/html%~%~")
 (format t "<h1>Hello</h1>")
+```
 
 Save as filename.cgi and chmod 755 filename.cgi
 
@@ -64,3 +66,8 @@ Start serving:
 Stop serving:
 `(hunchentoot:stop *acceptor*)`
 
+## Literal data should not be modified
+
+Applying destructive actions such as `setf` and `incf` to literal data `'(1 2 3)` is undefined.
+
+Use `(list 1 2 3)` or `copy-list` to avoid this problem (or avoid destructive actions altogether).
