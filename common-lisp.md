@@ -2,6 +2,17 @@
 
 https://lispcookbook.github.io/cl-cookbook/debugging.html
 
+## SLIME Operations
+
+Modeled after Common Lisp, An Interactive Approach, Section B.2
+
+Version of Common Lisp: Clozure Common Lisp 1.12
+.emacs variable: (setq inferior-lisp-program "/home/heitor/installers/ccl/lx86cl64 -l /home/heitor/lisp/heitor.lisp")
+How to run Lisp: M-x slime
+How to exit Lisp: (quit)
+Interrupt: C-c C-c
+Exit the debugger completely: q
+
 ## SBCL
 
 ### Debugger
