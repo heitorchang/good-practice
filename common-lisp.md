@@ -15,6 +15,14 @@ Exit the debugger completely: q
 
 ## SBCL
 
+### Tail-call optimization
+
+To enable, evaluate:
+
+`(declaim (optimize (speed 3) (space 0) (debug 0)))`
+
+Functions need to be redefined after this change.
+
 ### Debugger
 
 To enable a more complete backtrace, evaluate in the beginning:
@@ -22,6 +30,8 @@ To enable a more complete backtrace, evaluate in the beginning:
 `(declaim (optimize (speed 0) (space 0) (debug 3)))`
 
 Add the above line to ~/.sbclrc, optionally add `(format t "Debug set to 3")`
+
+If declaiming in the REPL, functions need to be redefined after this change.
 
 `ba` print backtrace
 
