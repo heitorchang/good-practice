@@ -2,6 +2,17 @@
 
 https://lispcookbook.github.io/cl-cookbook/debugging.html
 
+## Packages
+
+See Practical Common Lisp, ch. 21
+
+```
+(defpackage "MY-PACKAGE"
+  (:use "COMMON-LISP"))
+
+(in-package "MY-PACKAGE")
+```
+
 ## SLIME Operations
 
 Modeled after Common Lisp, An Interactive Approach, Section B.2
