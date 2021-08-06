@@ -24,7 +24,6 @@ run right before the push: `git fetch origin master`
 Delete local branch: `git branch --delete my_branch`
 
 Delete remote branch: `git push origin --delete my_branch`
-or: `git push -d origin my_branch`
 
 Rename local branch: `git branch -m new-name`
 
