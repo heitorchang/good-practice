@@ -24,9 +24,22 @@ How to exit Lisp: (quit)
 Interrupt: C-c C-c
 Exit the debugger completely: q
 
+## Clozure Common Lisp (CCL)
+
+### Tail call optimization
+
+Use declare. Without it, stack will overflow at around 65536.
+```
+(defun self-inc (n)
+  (declare (optimize (speed 3) (safety 0) (debug 0)))
+  (format t "~a~%" n)
+  (if (< n 1000000)
+      (self-inc (1+ n))))
+```
+
 ## SBCL
 
-### Tail-call optimization
+### Tail call optimization
 
 To enable, evaluate:
 
