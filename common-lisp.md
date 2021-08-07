@@ -26,12 +26,14 @@ Exit the debugger completely: q
 
 ## Clozure Common Lisp (CCL)
 
+`declaim` speed or debug in a startup file does not seem to have any effect. Must evaluate it in the REPL.
+
 ### Tail call optimization
 
 Use declare. Without it, stack will overflow at around 65536.
 ```
 (defun self-inc (n)
-  (declare (optimize (speed 3) (safety 0) (debug 0)))
+  (declare (optimize (speed 3) (space 0) (safety 0) (debug 0)))
   (format t "~a~%" n)
   (if (< n 1000000)
       (self-inc (1+ n))))
