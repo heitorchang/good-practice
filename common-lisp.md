@@ -28,6 +28,10 @@ Exit the debugger completely: q
 
 `declaim` speed or debug in a startup file does not seem to have any effect. Must evaluate it in the REPL.
 
+C-f2 is set up to insert the following form:
+
+(declaim (optimize (speed 0) (safety 0) (space 0) (debug 3)))
+
 ### Tail call optimization
 
 Use declare. Without it, stack will overflow at around 65536.
