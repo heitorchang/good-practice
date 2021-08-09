@@ -30,14 +30,14 @@ Exit the debugger completely: q
 
 C-f2 is set up to insert the following form:
 
-(declaim (optimize (speed 0) (safety 0) (space 0) (debug 3)))
+(declaim (optimize (debug 3) (safety 3) (space 0) (speed 0)))
 
 ### Tail call optimization
 
 Use declare. Without it, stack will overflow at around 65536.
 ```
 (defun self-inc (n)
-  (declare (optimize (speed 3) (space 0) (safety 0) (debug 0)))
+  (declare (optimize (debug 0) (safety 0) (space 0) (speed 3)))
   (format t "~a~%" n)
   (if (< n 1000000)
       (self-inc (1+ n))))
