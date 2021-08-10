@@ -32,6 +32,8 @@ C-f2 is set up to insert the following form:
 
 (declaim (optimize (debug 3) (safety 3) (space 0) (speed 0)))
 
+(debug 3) may be written simply as debug
+
 ### Tail call optimization
 
 Use declare. Without it, stack will overflow at around 65536.
