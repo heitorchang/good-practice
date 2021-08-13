@@ -1,5 +1,19 @@
 # Clojure
 
+## Clojure 1.10
+
+Installed following instructions at https://clojure.org/guides/getting_started
+
+### clj command-line tool
+
+Running `clj` in a folder with `deps.edn` will set up the right dependencies and classpaths.
+
+### Debugging
+
+Call `(pst)` in the REPL to get the stack trace
+
+## Alternative method
+
 Install Java and Maven, and build the release files manually
 
 * Download a Clojure release zip
