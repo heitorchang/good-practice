@@ -24,6 +24,10 @@ How to exit Lisp: (quit)
 Interrupt: C-c C-c
 Exit the debugger completely: q
 
+## CLISP
+
+In the default REPL, type :q to exit the debugger.
+
 ## Clozure Common Lisp (CCL)
 
 `declaim` speed or debug in a startup file does not seem to have any effect. Must evaluate it in the REPL.
