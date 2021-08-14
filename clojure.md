@@ -8,11 +8,35 @@ Installed following instructions at https://clojure.org/guides/getting_started
 
 Running `clj` in a folder with `deps.edn` will set up the right dependencies and classpaths.
 
+In Emacs' shell, `clojure` will not cause the rlwrap error.
+
+### Cider debugging
+
+`C-u C-M-x` calls `cider-debug-defun-at-point`, allowing step-by-step navigation (press n to continue, q to quit)
+
+`C-M-x` turns off debugging. It also sends the function to the REPL (`cider-eval-defun-at-point`).
+
+`C-c M-t n` turns on tracing for the current namespace.
+
 ### Debugging
 
-Call `(pst)` in the REPL to get the stack trace
+Call `(pst)` in the REPL to get the stack trace (not terribly useful because local variable info is not printed)
 
-## Alternative method
+### Tracing
+
+Install https://github.com/clojure/tools.trace
+
+Add to deps.edn:
+
+```
+{:deps
+ {org.clojure/tools.trace {:mvn/version "0.7.11"}}
+ :paths ["."]}
+```
+
+Then call `(trace-ns *ns*)` (most useful)
+
+## Alternative installation method
 
 Install Java and Maven, and build the release files manually
 
