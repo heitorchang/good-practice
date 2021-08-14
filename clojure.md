@@ -16,7 +16,7 @@ In Emacs' shell, `clojure` will not cause the rlwrap error.
 
 `C-M-x` turns off debugging. It also sends the function to the REPL (`cider-eval-defun-at-point`).
 
-`C-c M-t n` turns on tracing for the current namespace.
+`C-c M-t n` turns on tracing for the current namespace (`cider-toggle-trace-ns`)
 
 ### Debugging
 
