@@ -12,6 +12,8 @@ In Emacs' shell, `clojure` will not cause the rlwrap error.
 
 ### Cider debugging
 
+`C-c C-q` quits.
+
 `C-u C-M-x` calls `cider-debug-defun-at-point`, allowing step-by-step navigation (press n to continue, q to quit)
 
 `C-M-x` turns off debugging. It also sends the function to the REPL (`cider-eval-defun-at-point`).
