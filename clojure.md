@@ -14,7 +14,8 @@ In Emacs' shell, `clojure` will not cause the rlwrap error.
 
 `C-c C-q` quits.
 
-`C-u C-M-x` calls `cider-debug-defun-at-point`, allowing step-by-step navigation (press n to continue, q to quit)
+`C-u C-M-x` calls `cider-debug-defun-at-point`, allowing step-by-step navigation
+  (press n to continue, q to quit)
 
 `C-M-x` turns off debugging. It also sends the function to the REPL (`cider-eval-defun-at-point`).
 
@@ -37,6 +38,17 @@ Add to deps.edn:
 ```
 
 Then call `(trace-ns *ns*)` (most useful)
+
+## Running examples in Programming Clojure, 3rd edition
+
+Visit (C-x C-f) `deps.edn` in the top-level directory, to set Emacs' working directory to that directory.
+
+Call `M-x cider-jack-in` 
+
+```
+(require 'examples.introduction)
+(examples.introduction/hello "Cosmos")
+```
 
 ## Alternative installation method
 
