@@ -50,6 +50,9 @@ Call `M-x cider-jack-in`
 (examples.introduction/hello "Cosmos")
 ```
 
+To bring in all vars from another lib, call
+`(require '[examples.exploring :refer :all])`
+
 ## Alternative installation method
 
 Install Java and Maven, and build the release files manually
