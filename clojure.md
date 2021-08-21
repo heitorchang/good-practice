@@ -21,6 +21,8 @@ In Emacs' shell, `clojure` will not cause the rlwrap error.
 
 `C-c M-t n` turns on tracing for the current namespace (`cider-toggle-trace-ns`)
 
+`C-c C-z` switches to the REPL
+
 ### Debugging
 
 Call `(pst)` in the REPL to get the stack trace (not terribly useful because local variable info is not printed)
@@ -50,8 +52,15 @@ Call `M-x cider-jack-in`
 (examples.introduction/hello "Cosmos")
 ```
 
-To bring in all vars from another lib, call
+`(require '[examples.introduction :as intro])`
+`(require '(clojure zip [set as :s]))` loads clojure.zip and clojure.set as s
+
+To bring in all vars from another lib, call (not recommended)
 `(require '[examples.exploring :refer :all])`
+
+## ns macro
+
+According to `(doc ns)`, use of ns is preferred to individual calls to in-ns/require/use/import
 
 ## Alternative installation method
 
