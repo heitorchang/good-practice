@@ -21,3 +21,11 @@ Reboot
 Disk: sudo iotop
 
 Network: sudo nethogs
+
+Memory: top -c (shows all processes)
+
+top -c -d 0.5 refreshes every 0.5 seconds
+
+press 'o' then type COMMAND=py (for example, for python processes)
+
+press 'e' to switch to human-readable sizes
