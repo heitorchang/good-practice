@@ -41,6 +41,11 @@ Add to deps.edn:
 
 Then call `(trace-ns *ns*)` (most useful)
 
+## Emacs keys
+
+C-M-k kill-sexp
+M-left and M-right backward, forward-sexp
+
 ## Running examples in Programming Clojure, 3rd edition
 
 Visit (C-x C-f) `deps.edn` in the top-level directory, to set Emacs' working directory to that directory.
