@@ -27,6 +27,8 @@ In Emacs' shell, `clojure` will not cause the rlwrap error.
 
 Call `(pst)` in the REPL to get the stack trace (not terribly useful because local variable info is not printed)
 
+In the REPL, *e prints the error and stack trace.
+
 ### Tracing
 
 Install https://github.com/clojure/tools.trace
