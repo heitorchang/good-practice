@@ -69,6 +69,12 @@ To bring in all vars from another lib, call (not recommended)
 
 According to `(doc ns)`, use of ns is preferred to individual calls to in-ns/require/use/import
 
+## Current working directory
+
+`(System/getProperty "user.dir")`
+
+It appears that there is no simple way to change the working directory
+
 ## Alternative installation method
 
 Install Java and Maven, and build the release files manually
