@@ -48,6 +48,20 @@ Then call `(trace-ns *ns*)` (most useful)
 C-M-k kill-sexp
 M-left and M-right backward, forward-sexp
 
+## Leiningen
+
+Could not find a way to automatically require libs with the CLI command `clj`.
+
+With `lein`, there is `:repl-options` that can be put in `project.clj`.
+
+```
+(defproject com.heitorchang/learnclj "0.0.1"
+  :description "Learn clj"
+  :dependencies [[org.clojure/clojure "1.10.3"]
+                 [org.clojure/math.numeric-tower "0.0.4"]]
+  :repl-options { :init (require '[clojure.string :as str] '[clojure.math.numeric-tower :as math])})
+```
+
 ## Running examples in Programming Clojure, 3rd edition
 
 Visit (C-x C-f) `deps.edn` in the top-level directory, to set Emacs' working directory to that directory.
