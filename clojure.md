@@ -54,12 +54,16 @@ Could not find a way to automatically require libs with the CLI command `clj`.
 
 With `lein`, there is `:repl-options` that can be put in `project.clj`.
 
+*print-length* limits the number of items that will be printed (with println)
+
 ```
 (defproject com.heitorchang/learnclj "0.0.1"
   :description "Learn clj"
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
-  :repl-options { :init (require '[clojure.string :as str] '[clojure.math.numeric-tower :as math])})
+  :repl-options { :init (do
+                          (set! *print-length* 100)
+                          (require '[clojure.string :as str] '[clojure.math.numeric-tower :as math]))})
 ```
 
 ## Running examples in Programming Clojure, 3rd edition
