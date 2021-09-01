@@ -60,3 +60,6 @@ To clear the credential cache:
 
 `git credential-cache exit`
 
+To show a pretty graph with branches (mnemonic: adog)
+
+`git log --all --decorate --oneline --graph`
