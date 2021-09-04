@@ -128,3 +128,13 @@ Stop serving:
 Applying destructive actions such as `setf` and `incf` to literal data `'(1 2 3)` is undefined.
 
 Use `(list 1 2 3)` or `copy-list` to avoid this problem (or avoid destructive actions altogether).
+
+## Association Lists (alists)
+
+Add:
+
+(setf *alist* (acons 'a 1 *alist))
+
+Update:
+
+(setf (cdr (assoc 'a *alist*)) 10)
