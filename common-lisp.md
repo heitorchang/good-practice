@@ -138,3 +138,30 @@ Add:
 Update:
 
 (setf (cdr (assoc 'a *alist*)) 10)
+
+## Parsing JSON in a file
+
+(ql:quickload :st-json)
+(use-package :st-json)
+
+Assuming the file was created by JSON.stringify in a browser:
+
+"{\"name\":\"Jack\",\"age\":8,\"pets\":{\"Skip\":5,\"Lucy\":3}}"
+
+(defparameter *json-data* nil)
+
+(with-open-file (in "/home/heitor/tmp/jack.json")
+  (setf *json-data* (read-json (read in))))
+
+Get keys of a jso
+
+(defun jso-keys (jso)
+   (let ((keys ()))
+     (mapjso #'(lambda (k v) (push k keys)) jso)
+     keys))
+
+(getjso "age" *json-data*)
+(getjso* "pets.Lucy" *json-data*)
+
+(mapjso #'(lambda (k v) (print (list k v))) *json-data*)
+
