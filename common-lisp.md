@@ -165,3 +165,12 @@ Get keys of a jso
 
 (mapjso #'(lambda (k v) (print (list k v))) *json-data*)
 
+## Files
+
+(uiop:getcwd)
+
+(uiop:chdir "~/tmp")
+
+(uiop:directory-files "")
+
+(uiop:subdirectories "")
