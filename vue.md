@@ -191,3 +191,7 @@ myrefsApp.$refs.mydashboard.$refs.mychart.sayHi()
 
 myrefsApp.$refs.mydashboard.$refs.mychart.name
 ```
+
+# Object and Set reactivity
+
+For objects and sets, Vue cannot detect property addition or deletion. Workaround: reassign the object/set to a copy (clone) of itself.
