@@ -177,7 +177,11 @@ Get keys of a jso
 
 ## Variable arguments to macros might have to be evaled
 
-(defmacro jso-wrapper (key1)
-  `(obj-keys-or-val ,(eval key1)))
+For example, calling the ST-JSON macro getjso* does not work when passing a var. It works with a string argument.
 
-(jso-wrapper *key*)
+(defmacro jso*-wrapper (k jso)
+  `(getjso* ,(eval k) ,jso))
+
+(defparameter *key* "enaBasinObs")
+
+(jso*-wrapper *key* *tok-json*)
