@@ -175,7 +175,7 @@ Get keys of a jso
 
 (uiop:subdirectories "")
 
-## Variable arguments to macros must be evaled
+## Variable arguments to macros might have to be evaled
 
 (defmacro jso-wrapper (key1)
   `(obj-keys-or-val ,(eval key1)))
