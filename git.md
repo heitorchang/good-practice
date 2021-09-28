@@ -18,6 +18,8 @@ Compare branches: `git diff brancha..branchb`
 
 Compare file status between branches: `git diff --name-status brancha..branchb`
 
+Compare current branch with master: `git diff master`
+
 To avoid Git from copying the whole repo after branching,
 run right before the push: `git fetch origin master`
 
