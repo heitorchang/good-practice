@@ -1,6 +1,6 @@
 # Python 3
 
-## shave diacritic marks
+## Shave diacritic marks
 
 From Fluent Python
 
@@ -15,3 +15,12 @@ def shave_marks(txt):
                      if not unicodedata.combining(c))
     return unicodedata.normalize('NFC', shaved)
 ```
+
+## Prevent running command-line code when sending to interactive interpreter 
+
+def myfunction(x):
+    pass
+    
+if __name__ == "__main__" and sys.flags.interactive != 1:
+    print("command-line mode")
+    print(myfunction(sys.argv[1]))
