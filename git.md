@@ -10,6 +10,10 @@ Bypass checks: `git commit --no-verify -m "commit message"`
 
 Pushing the first time: `git push -u origin master`
 
+Viewing changes in all commits: `git log -p`
+
+Viewing changes in last commit: `git log -p -1`
+
 New branch: `git checkout -b new_feature`
 
 List branches: `git branch -a`
