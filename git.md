@@ -14,6 +14,8 @@ Viewing changes in all commits: `git log -p`
 
 Viewing changes in last commit: `git log -p -1`
 
+Show filenames only in log: `git log --name-only`
+
 New branch: `git checkout -b new_feature`
 
 List branches: `git branch -a`
