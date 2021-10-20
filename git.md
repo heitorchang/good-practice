@@ -41,6 +41,15 @@ Cannot rename remote branch. Push the new branch, then delete the old one.
 `git push -u origin new-name`
 `git push origin --delete old-name`
 
+Show commit hashes (short): `git log --oneline`
+
+Show commits with timestamps: `git log --pretty=format:"%h%x09%as%x09%s"`
+(Aliased as githist)
+
+Go back to a previous commit: `git checkout f5c0d32`
+
+To move to latest commit: `git checkout -`
+
 Revert non-committed changes: `git restore my_file`
 
 Unstage: `git restore --staged my_file`
