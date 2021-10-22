@@ -24,3 +24,9 @@ def myfunction(x):
 if __name__ == "__main__" and sys.flags.interactive != 1:
     print("command-line mode")
     print(myfunction(sys.argv[1]))
+
+## pip
+
+run first:
+
+python -m pip install --upgrade pip
