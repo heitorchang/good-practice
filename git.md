@@ -30,6 +30,7 @@ To avoid Git from copying the whole repo after branching,
 run right before the push: `git fetch origin master`
 
 Delete local branch: `git branch --delete my_branch`
+Force delete local branch: `git branch -D my_branch`
 
 Delete remote branch: `git push origin --delete my_branch`
 
@@ -80,3 +81,13 @@ To clear the credential cache:
 To show a pretty graph with branches (mnemonic: adog)
 
 `git log --all --decorate --oneline --graph`
+
+To get a local copy of all branches:
+
+```
+mkdir backup_repo
+cd backup_repo
+git clone --bare https://path/to/repo.git .git
+git config --unset core.bare
+git reset --hard
+```
