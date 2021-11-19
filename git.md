@@ -91,3 +91,7 @@ git clone --bare https://path/to/repo.git .git
 git config --unset core.bare
 git reset --hard
 ```
+
+To merge two files (without branches)
+
+`git merge-file --ours currentFileToBeWritten originalFile fileToPullChangesFrom`
