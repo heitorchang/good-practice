@@ -126,6 +126,7 @@ Add to `.emacs`
             (auto-complete-mode 1)
             (define-key clojure-mode-map (kbd "<M-left>") 'backward-sexp)
             (define-key clojure-mode-map (kbd "<M-right>") 'forward-sexp)
+            (define-key clojure-mode-map (kbd "<S-return>") 'cider-eval-defun-at-point)
             (define-key clojure-mode-map (kbd "<C-return>") 'my-cider-save-and-compile-buffer)
             (local-set-key (kbd "<S-return>") 'cider-eval-last-sexp)))
 ```
