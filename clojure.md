@@ -3,6 +3,7 @@
 ## Clojure 1.10
 
 Installed following instructions at https://clojure.org/guides/getting_started
+In Windows, installed lein.bat
 
 ### clj command-line tool
 
