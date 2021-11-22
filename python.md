@@ -21,7 +21,7 @@ def shave_marks(txt):
 def myfunction(x):
     pass
     
-if __name__ == "__main__" and sys.flags.interactive != 1:
+if __name__ == "__main__" and sys.flags.interactive == 0:
     print("command-line mode")
     print(myfunction(sys.argv[1]))
 
