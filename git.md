@@ -95,3 +95,7 @@ git reset --hard
 To merge two files (without branches)
 
 `git merge-file currentFileToBeWritten originalFile fileToPullChangesFrom`
+
+To compare two files in the same branch
+
+`git diff --no-index FILE_A FILE_B`
