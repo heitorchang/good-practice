@@ -64,10 +64,11 @@ Save in /home/heitor/cljrepl/project.clj
   :description "Clojure REPL"
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
-  :repl-options { :init (do
-                          (set! *print-length* 100)
-                          (require '[clojure.string :as str]
-                                   '[clojure.math.numeric-tower :as math]))})
+  :repl-options {:init-ns clojure-repl
+                 :init (do
+                         (set! *print-length* 100)
+                         (require '[clojure.string :as str]
+                                  '[clojure.math.numeric-tower :as math]))})
 
 ;; WAIT for REPL to load
 ```
