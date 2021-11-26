@@ -57,14 +57,19 @@ With `lein`, there is `:repl-options` that can be put in `project.clj`.
 
 *print-length* limits the number of items that will be printed (with println)
 
+Save in /home/heitor/cljrepl/project.clj
+
 ```
-(defproject com.heitorchang/learnclj "0.0.1"
-  :description "Learn clj"
+(defproject com.heitorchang/cljrepl "0.0.1"
+  :description "Clojure REPL"
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
   :repl-options { :init (do
                           (set! *print-length* 100)
-                          (require '[clojure.string :as str] '[clojure.math.numeric-tower :as math]))})
+                          (require '[clojure.string :as str]
+                                   '[clojure.math.numeric-tower :as math]))})
+
+;; WAIT for REPL to load
 ```
 
 ## Running examples in Programming Clojure, 3rd edition
