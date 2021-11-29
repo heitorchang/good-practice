@@ -29,3 +29,14 @@ top -c -d 0.5 refreshes every 0.5 seconds
 press 'o' then type COMMAND=py (for example, for python processes)
 
 press 'e' to switch to human-readable sizes
+
+## Killing stuck programs
+
+find program's pid with
+ps -ef
+
+kill -9 pid
+
+killall
+
+xkill

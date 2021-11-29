@@ -135,3 +135,8 @@ Add to `.emacs`
             (define-key clojure-mode-map (kbd "<C-return>") 'my-cider-save-and-compile-buffer)
             (local-set-key (kbd "<S-return>") 'cider-eval-last-sexp)))
 ```
+
+## REPL Utilities
+
+*1, *2, and *3 represent the latest results
+*e is the last exception thrown
