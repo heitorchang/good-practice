@@ -30,3 +30,7 @@ if __name__ == "__main__" and sys.flags.interactive == 0:
 run first:
 
 python -m pip install --upgrade pip
+
+## traceback
+
+traceback.format_exc()
