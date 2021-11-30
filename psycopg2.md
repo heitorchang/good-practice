@@ -98,3 +98,7 @@ ON CONFLICT (name, city, state) DO NOTHING
         page_size=PAGE_SIZE
     )
 ```
+
+## Using IN operator
+
+instead of passing a list, pass a tuple to replace the %s in an "where x IN %s" clause.
