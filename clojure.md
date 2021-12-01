@@ -140,3 +140,11 @@ Add to `.emacs`
 
 *1, *2, and *3 represent the latest results
 *e is the last exception thrown
+
+## REPL require
+
+(require '[clojure.string :as str])
+
+the vector is quoted because in effect its contents become quoted
+
+'[a b c] is ['a 'b 'c]
