@@ -40,3 +40,7 @@ kill -9 pid
 killall
 
 xkill
+
+## Pasting large amounts of data from the clipboard to a file
+
+`xclip -o > /path/to/file`
