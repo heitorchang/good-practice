@@ -33,4 +33,7 @@ python -m pip install --upgrade pip
 
 ## traceback
 
-traceback.format_exc()
+Inside an except block:
+
+traceback.print_exc()  # prints the traceback
+traceback.format_exc() # returns a string of the traceback 
