@@ -148,3 +148,11 @@ Add to `.emacs`
 the vector is quoted because in effect its contents become quoted
 
 '[a b c] is ['a 'b 'c]
+
+## Read entire contents of a file
+
+(slurp "/tmp/myfile.txt")
+
+## Write content to a file
+
+(spit "/tmp/output.txt" "my string")
