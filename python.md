@@ -36,4 +36,8 @@ python -m pip install --upgrade pip
 Inside an except block:
 
 traceback.print_exc()  # prints the traceback
-traceback.format_exc() # returns a string of the traceback 
+traceback.format_exc() # returns a string of the traceback
+
+## JSON
+
+json.dumps(your_obj, indent=2)
