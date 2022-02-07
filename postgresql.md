@@ -16,6 +16,7 @@ In Windows, `~/.psqlrc` is
 
 `c:/Users/USERNAME/AppData/Roaming/postgresql/psqlrc.conf`
 
+
 ## psql REPL
 
 Save password instead of typing it interactively
@@ -32,6 +33,7 @@ Run a file
 
 `psql -f filename.sql`
 
+
 ## psqlrc
 
 ```
@@ -42,6 +44,7 @@ Run a file
 
 \pset null <null>
 ```
+
 
 ## in psql
 
@@ -80,6 +83,7 @@ where table_schema = 'public'
 and table_name = 'mytable'
 order by column_name
 
+
 ## Users
 
 peer authentication refers to the operating system's current user
@@ -89,6 +93,7 @@ To alter a login's password:
 enter the `psql` command-line tool
 
 `alter user tina with encrypted password 'mobliz';`
+
 
 ## CRUD
 
@@ -102,4 +107,22 @@ select * from users where name like '%tina%';
 
 update users set age = 25 where name = 'tina';
 
-delete from users where name = 'joe';  
+delete from users where name = 'joe';
+
+
+## Greatest-n-per-group
+
+Example: There may be multiple model simulations during a single day (multiple rows). The "updated" column is the time when the simulation was run. We wish to find the newest simulation run for a given model and 'created' date:
+
+            select * from (
+	    select row_number() over (partition by hsfe.model_id order by model_id desc, created desc, updated desc) as part_row,
+	    hsfe.model_id, m.display_name as modelo, m.vies, m.parent_folder, created as ultima,
+            jsonb_array_length(hsfe.variables->'stations'->0->'data'->'ena') as comprimento
+            from hydric_stations_fcst_ena hsfe
+	    join model m using(model_id)
+            where created >= %s::date - interval '8 days'
+            and created <= %s::date
+            and m.custom_forecast is true
+            group by hsfe.model_id, m.display_name, m.vies, m.parent_folder, created, updated, m.sort_order, comprimento
+            order by m.sort_order, ultima desc) as cte
+	    where part_row = 1
