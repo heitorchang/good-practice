@@ -95,3 +95,7 @@ git reset --hard
 To merge two files (without branches)
 
 `git merge-file currentFileToBeWritten originalFile fileToPullChangesFrom`
+
+Clean up local view of branches that have been deleted remotely:
+
+`git fetch -p`
