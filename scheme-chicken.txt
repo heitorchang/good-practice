@@ -1,0 +1,4 @@
+Chicken Scheme
+
+in the REPL, # represents the last value, while #1, #2, #3... are the corresponding results of the prompts #;1>, #;2>, #;3>...
+,h shows all previously evaluated expression results

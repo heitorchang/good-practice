@@ -1,0 +1,50 @@
+JS fetch API
+
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+### Example
+
+const data = { username: 'example' };
+
+fetch('https://example.com/profile', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then((response) => response.json())
+.then((data) => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+
+### async/await
+
+An async function always returns a promise.
+
+The json returned by fetch must be consumed by another async function.
+
+async function getInfo() {
+  const response = await fetch("http://127.0.0.1:9000/my_info", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "apiToken": "MY_API_TOKEN",
+      "dataPesq": "2022-01-12",
+    })
+  });
+  const json = await response.json();
+  return json;
+}
+
+async function processInfo() {
+  const data = await getInfo();
+  console.log(data);
+}
+

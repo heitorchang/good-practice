@@ -57,14 +57,20 @@ With `lein`, there is `:repl-options` that can be put in `project.clj`.
 
 *print-length* limits the number of items that will be printed (with println)
 
+Save in /home/heitor/cljrepl/project.clj
+
 ```
-(defproject com.heitorchang/learnclj "0.0.1"
-  :description "Learn clj"
+(defproject com.heitorchang/cljrepl "0.0.1"
+  :description "Clojure REPL"
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
-  :repl-options { :init (do
-                          (set! *print-length* 100)
-                          (require '[clojure.string :as str] '[clojure.math.numeric-tower :as math]))})
+  :repl-options {:init-ns clojure-repl
+                 :init (do
+                         (set! *print-length* 100)
+                         (require '[clojure.string :as str]
+                                  '[clojure.math.numeric-tower :as math]))})
+
+;; WAIT for REPL to load
 ```
 
 ## Running examples in Programming Clojure, 3rd edition
@@ -129,3 +135,24 @@ Add to `.emacs`
             (define-key clojure-mode-map (kbd "<C-return>") 'my-cider-save-and-compile-buffer)
             (local-set-key (kbd "<S-return>") 'cider-eval-last-sexp)))
 ```
+
+## REPL Utilities
+
+*1, *2, and *3 represent the latest results
+*e is the last exception thrown
+
+## REPL require
+
+(require '[clojure.string :as str])
+
+the vector is quoted because in effect its contents become quoted
+
+'[a b c] is ['a 'b 'c]
+
+## Read entire contents of a file
+
+(slurp "/tmp/myfile.txt")
+
+## Write content to a file
+
+(spit "/tmp/output.txt" "my string")

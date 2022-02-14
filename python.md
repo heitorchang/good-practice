@@ -21,7 +21,7 @@ def shave_marks(txt):
 def myfunction(x):
     pass
     
-if __name__ == "__main__" and sys.flags.interactive != 1:
+if __name__ == "__main__" and sys.flags.interactive == 0:
     print("command-line mode")
     print(myfunction(sys.argv[1]))
 
@@ -30,3 +30,14 @@ if __name__ == "__main__" and sys.flags.interactive != 1:
 run first:
 
 python -m pip install --upgrade pip
+
+## traceback
+
+Inside an except block:
+
+traceback.print_exc()  # prints the traceback
+traceback.format_exc() # returns a string of the traceback
+
+## JSON
+
+json.dumps(your_obj, indent=2)

@@ -185,3 +185,7 @@ For example, calling the ST-JSON macro getjso* does not work when passing a var.
 (defparameter *key* "enaBasinObs")
 
 (jso*-wrapper *key* *tok-json*)
+
+## Format a float in scientific notation
+
+(defun e (val) (format t "  ~e" val) t)

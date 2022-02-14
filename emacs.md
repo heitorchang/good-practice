@@ -57,3 +57,11 @@ Load them in .emacs
  '(custom-enabled-themes (quote (my-tango)))
  ;; ...
 )
+
+# view-lossage
+
+C-h l shows a list of recently-typed keys and commands
+
+# yank (paste) and go back to original cursor position
+
+C-y then C-u C-SPC

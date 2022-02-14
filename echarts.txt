@@ -1,0 +1,19 @@
+Minimal line chart:
+
+const chart = echarts.init(document.getElementById('chart'));
+
+chart.setOption({
+  xAxis: {
+    type: 'category',
+    data: ['a', 'b', 'c'],
+},
+  yAxis: {
+    type: 'value',
+  },
+  series: [
+    {
+      data: [1, 2, 3],
+      type: 'line',
+    },
+  ],
+});

@@ -10,9 +10,11 @@ Bypass checks: `git commit --no-verify -m "commit message"`
 
 Pushing the first time: `git push -u origin master`
 
-Viewing changes in all commits: `git log -p`
+Viewing changes in all commits: `git log -p` (patch)
 
 Viewing changes in last commit: `git log -p -1`
+
+Show in one line whether file was added, modified, renamed or deleted (useful when there are long lines) `git log --raw`
 
 Show filenames only in log: `git log --name-only`
 
@@ -95,6 +97,10 @@ git reset --hard
 To merge two files (without branches)
 
 `git merge-file currentFileToBeWritten originalFile fileToPullChangesFrom`
+
+To compare two files in the same branch
+
+`git diff --no-index FILE_A FILE_B`
 
 Clean up local view of branches that have been deleted remotely:
 
