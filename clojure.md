@@ -77,7 +77,7 @@ Save in /home/heitor/cljrepl/project.clj
 
 Visit (C-x C-f) `deps.edn` in the top-level directory, to set Emacs' working directory to that directory.
 
-Call `M-x cider-jack-in` 
+Call `M-x cider-jack-in`
 
 ```
 (require 'examples.introduction)
@@ -156,3 +156,30 @@ the vector is quoted because in effect its contents become quoted
 ## Write content to a file
 
 (spit "/tmp/output.txt" "my string")
+
+## SQLite
+
+;; project.clj
+;; run cider-jack-in
+(defproject com.heitorchang/sqlite "0.1.0"
+  :dependencies [[org.clojure/clojure "1.10.3"]
+                 [org.clojure/java.jdbc "0.7.12"]
+                 [org.xerial/sqlite-jdbc "3.36.0.3"]]
+  :repl-options {:init-ns com.heitorchang
+                 :init (do
+                         (set! *print-length* 100)
+                         (require '[clojure.string :as str]
+                                  '[clojure.pprint :as p]
+                                  '[clojure.java.jdbc :as j]))})
+
+In the REPL:
+
+(def db {:classname "org.sqlite.JDBC"
+         :subprotocol "sqlite"
+         :subname "/home/heitor/experimental/clojure/sqlite/mydata.db"})
+
+Show table names:
+(p/print-table (j/query db "select name from sqlite_master where type = 'table' order by name"))
+
+Query a table:
+(p/print-table (j/query db "select * from my_table"))
