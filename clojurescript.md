@@ -37,3 +37,13 @@ Functions defined in core.cljs (the definition must be evaluated) such as:
 may be called on the Clojure side with (hello-world.core/f 20)
 
 In the browser, hello_world.core.f(30) calls the function.
+
+Export functions with ^:export
+
+(defn ^:export g [x] ...)
+
+In the directory with deps.edn, compile a main.js file with:
+
+clj -M -m cljs.main --optimizations advanced -c my_project.core
+
+main.js will be in the out/ directory
