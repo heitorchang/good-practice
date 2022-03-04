@@ -14,6 +14,8 @@ Viewing changes in all commits: `git log -p` (patch)
 
 Viewing changes in last commit: `git log -p -1`
 
+Viewing changes in a specific commit: `git show 2ef3abc` (first few characters of hash, at least 4 chars)
+
 Show in one line whether file was added, modified, renamed or deleted (useful when there are long lines) `git log --raw`
 
 Show filenames only in log: `git log --name-only`
