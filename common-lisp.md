@@ -189,3 +189,7 @@ For example, calling the ST-JSON macro getjso* does not work when passing a var.
 ## Format a float in scientific notation
 
 (defun e (val) (format t "  ~e" val) t)
+
+## Get previous values in the REPL
+
+*, **, and *** are bound to the previously computed values.
