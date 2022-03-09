@@ -133,7 +133,7 @@ Use `(list 1 2 3)` or `copy-list` to avoid this problem (or avoid destructive ac
 
 Add:
 
-(setf *alist* (acons 'a 1 *alist))
+(setf *alist* (acons 'a 1 *alist*))
 
 Update:
 
