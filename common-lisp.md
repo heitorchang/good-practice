@@ -7,10 +7,10 @@ https://lispcookbook.github.io/cl-cookbook/debugging.html
 See Practical Common Lisp, ch. 21
 
 ```
-(defpackage "MY-PACKAGE"
-  (:use "COMMON-LISP"))
+(defpackage :my-package
+  (:use :cl)) ; same as :common-lisp
 
-(in-package "MY-PACKAGE")
+(in-package :my-package)
 ```
 
 ## SLIME Operations
