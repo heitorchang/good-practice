@@ -16,11 +16,11 @@ def shave_marks(txt):
     return unicodedata.normalize('NFC', shaved)
 ```
 
-## Prevent running command-line code when sending to interactive interpreter 
+## Prevent running command-line code when sending to interactive interpreter
 
 def myfunction(x):
     pass
-    
+
 if __name__ == "__main__" and sys.flags.interactive == 0:
     print("command-line mode")
     print(myfunction(sys.argv[1]))
@@ -41,3 +41,20 @@ traceback.format_exc() # returns a string of the traceback
 ## JSON
 
 json.dumps(your_obj, indent=2)
+
+## Packages and import
+
+According to https://alex.dzyoba.com/blog/python-import/, both __init__.py and __main__.py should be included to run `python -m module.py`
+
+## Emacs REPL and importing from multiple files
+
+Suppose you have main.py and helper.py (imported by main). If you edit helper, send helper, and then re-send main, the old helper contents will come back.
+
+One possible workaround is to check if a variable, IMPORTED, was set or not:
+
+```
+if not locals().get('IMPORTED'):
+    print("Importing to main")
+    from helper import f
+    IMPORTED = True
+```
