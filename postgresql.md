@@ -126,3 +126,7 @@ Example: There may be multiple model simulations during a single day (multiple r
             group by hsfe.model_id, m.display_name, m.vies, m.parent_folder, created, updated, m.sort_order, comprimento
             order by m.sort_order, ultima desc) as cte
 	    where part_row = 1
+
+## Adding column with default value
+
+alter table MY_TABLE add column NEW_COLUMN TYPE default MY_DEFAULT;
