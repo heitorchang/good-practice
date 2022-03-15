@@ -12,6 +12,8 @@ Pushing the first time: `git push -u origin master`
 
 Viewing changes in all commits: `git log -p` (patch)
 
+Viewing changes in conflict resolution: `git log -p -c -- filename`
+
 Viewing changes in last commit: `git log -p -1`
 
 Viewing changes in a specific commit: `git show 2ef3abc` (first few characters of hash, at least 4 chars)
