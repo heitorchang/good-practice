@@ -16,7 +16,7 @@
     (display "Hello, BiwaScheme!")
     (display (string-append "Pi approx." (number->string (/ 355 113))))
 
-    (set! wheels 4)
+    (set! wheels 4)  ;; not good practice to use assignment
     (set! cars 20)
 
     (display "Car wheels:")
@@ -37,3 +37,13 @@ sudo npm install -g live-server
 
 Run in the BiwaScheme project directory:
 live-server
+
+
+# Notes
+
+* The empty list, printed as () is the null pointer value.
+* null? checks a value for ()
+* It must be written as '()
+* eq? checks if two things are the same object.
+* quote doesn't create a new data structure each time it's called, so structures created with quote should not be modified.
+* On the other hand, list does create new data structures.
