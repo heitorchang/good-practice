@@ -49,3 +49,40 @@ live-server
 * eq? checks if two things are the same object.
 * quote doesn't create a new data structure each time it's called, so structures created with quote should not be modified.
 * On the other hand, list does create new data structures.
+
+
+# Chicken Scheme
+
+In the REPL, # returns the last value. #1, #2, etc. correspond to the value of the expression at that index.
+
+
+# HTML Canvas with BiwaScheme
+
+  <body>
+    Canvas<br>
+    <canvas id="canvas" width="600" height="400"></canvas>
+
+    BiwaScheme console:
+    <pre id="bs-console"></pre>
+
+    <script src="biwascheme-0.7.4.js"></script>
+
+    <script type="text/biwascheme">
+(define *canvas* (dom-element "#canvas"))
+(define *ctx* (js-invoke *canvas* "getContext" "2d"))
+
+(define (fill)
+  (js-set! *ctx* "fillStyle" "#99f"))
+
+(define (sq x y side)
+  (js-invoke *ctx* "fillRect" x y side side))
+
+(define (clr)
+  (js-invoke *ctx* "clearRect" 0 0 600 400))
+
+(fill)
+(for-each (lambda (x) (sleep 0.0033) (clr) (sq x x 30)) (iota 351 0 1))
+
+(js-invoke *ctx* "stroke")
+    </script>
+  </body>
