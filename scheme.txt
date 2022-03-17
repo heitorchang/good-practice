@@ -10,6 +10,8 @@
     <script src="biwascheme-0.7.4.js"></script>
 
     <script type="text/biwascheme">
+    (load "myfun.scm")  ;; load another file
+
     (define wheels 2)
     (define cars 0)
 
