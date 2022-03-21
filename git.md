@@ -109,3 +109,7 @@ To compare two files in the same branch
 Clean up local view of branches that have been deleted remotely:
 
 `git fetch -p`
+
+Cancel a merge with conflicts
+
+`git merge --abort`
