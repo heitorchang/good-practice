@@ -30,6 +30,8 @@ Compare branches: `git diff brancha..branchb`
 
 Compare file status between branches: `git diff --name-status brancha..branchb`
 
+Compare file between branches: `git diff brancha..branchb -- myfile.txt`
+
 Compare current branch with master: `git diff master`
 
 To avoid Git from copying the whole repo after branching,
