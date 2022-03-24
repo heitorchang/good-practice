@@ -65,3 +65,7 @@ C-h l shows a list of recently-typed keys and commands
 # yank (paste) and go back to original cursor position
 
 C-y then C-u C-SPC
+
+# No color in terminal
+
+emacs -nw --color=no
