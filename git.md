@@ -115,3 +115,9 @@ Clean up local view of branches that have been deleted remotely:
 Cancel a merge with conflicts
 
 `git merge --abort`
+
+Check if dev branch has been merged into master:
+
+`git log --oneline master..dev`
+
+if nothing is printed, dev has been merged into master.
