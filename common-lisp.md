@@ -77,6 +77,10 @@ If declaiming in the REPL, functions need to be redefined after this change.
 
 If the error was caused by an invalid user input, place the cursor above the right frame and press `r`.
 
+#### Entering newlines in previous evaluations
+
+Type C-j to insert a newline when editing a previously evaluated expression
+
 ## CGI
 
 (from nearlyfreespeech forums)
