@@ -39,3 +39,22 @@ const resp = await fetch('http://127.0.0.1:9000/dummy', {
 });
 const data = await resp.json();
 ```
+
+Example with separate function
+
+```
+async function getData(requestArg) {
+  const resp = await fetch(`https://api.mysite.com/${requestArg}`, {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + jwtToken,
+    },
+  });
+  return await resp.json();
+}
+
+async function atualizarGrafico() {
+  const json = await getData(123);
+  console.log(json);
+}
+```
