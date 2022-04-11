@@ -118,6 +118,6 @@ Cancel a merge with conflicts
 
 Check if dev branch has been merged into master:
 
-`git log --oneline master..dev`
+`git log master..dev`
 
 if nothing is printed, dev has been merged into master.
