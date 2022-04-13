@@ -58,3 +58,37 @@ async function atualizarGrafico() {
   console.log(json);
 }
 ```
+
+AbortController stops pending fetch requests
+
+// API calls for directory listing
+let listingController = null;
+
+async function getListing(path) {
+  if (listingController) {
+    listingController.abort();
+  }
+
+  try {
+    listingController = new AbortController();
+    const response = await fetch(`https://storage.tempook.com/tokstorage/lista_ordenada/?t=${apiToken}&r=Comercializadora&s=${safeParams}`,
+      { signal: listingController.signal });
+    const json = await response.json();
+    return json;
+  }
+  catch (e) {
+    console.log("getListing: Aborted.");
+    return { links: [] };
+  }
+}
+
+async function processListing(path) {
+  const data = await getListing(path);
+  if (data.links.length === 0) {
+    $("#files").html("Carregando...");
+    return;
+  }
+  // rest of code for valid links
+}
+
+processListing('mypath');
