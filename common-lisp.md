@@ -197,3 +197,11 @@ For example, calling the ST-JSON macro getjso* does not work when passing a var.
 ## Get previous values in the REPL
 
 *, **, and *** are bound to the previously computed values.
+
+## SBCL executable
+
+Load the source file
+(load "/home/heitor/experimental/lisp/hello.lisp")
+
+Then build it
+(sb-ext:save-lisp-and-die "/home/heitor/hellobin" :toplevel #'hello-function :executable t)
