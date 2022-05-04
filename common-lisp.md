@@ -205,3 +205,13 @@ Load the source file
 
 Then build it
 (sb-ext:save-lisp-and-die "/home/heitor/hellobin" :toplevel #'hello-function :executable t)
+
+Use (progn ...) to make it a single sexp.
+
+#|
+
+(progn
+  (load "/home/heitor/experimental/lisp/cmd-adder.lisp")
+  (sb-ext:save-lisp-and-die "/home/heitor/bin/add" :toplevel #'main :executable t))
+
+|#
