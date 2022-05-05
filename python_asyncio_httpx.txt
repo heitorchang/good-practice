@@ -1,0 +1,135 @@
+https://www.twilio.com/blog/asynchronous-http-requests-in-python-with-httpx-and-asyncio
+
+*** Jump to "gather" to see the most efficient code (requests running at the same time)
+
+* Making an HTTP Request with HTTPX
+
+Let's start off by making a single GET request using HTTPX, to demonstrate how the keywords async and await work. We're going to use the Pokemon API as an example, so let's start by trying to get the data associated with the legendary 151st Pokemon, Mew.
+
+Run the following Python code, and you should see the name "mew" printed to the terminal:
+
+# single request
+import asyncio
+import httpx
+
+
+async def main():
+    pokemon_url = 'https://pokeapi.co/api/v2/pokemon/151'
+
+    async with httpx.AsyncClient() as client:
+
+        resp = await client.get(pokemon_url)
+
+        pokemon = resp.json()
+        print(pokemon['name'])
+
+asyncio.run(main())
+
+
+In this code, we're creating a coroutine called main, which we are running with the asyncio event loop. Here, we are making a request to the Pokemon API and then awaiting a response.
+
+This async keyword basically tells the Python interpreter that the coroutine we're defining should be run asynchronously with an event loop. The await keyword passes control back to the event loop, suspending the execution of the surrounding coroutine and letting the event loop run other things until the result that is being "awaited" is returned.
+
+
+* Making a large number of requests
+
+Making a single asynchronous HTTP request is great because we can let the event loop work on other tasks instead of blocking the entire thread while waiting for a response. This functionality truly shines when trying to make a larger number of requests. Let's demonstrate this by performing the same request as before, but for all 150 of the original Pokemon.
+
+Let's take the previous request code and put it in a loop, updating which Pokemon's data is being requested and using await for each request:
+
+import asyncio
+import httpx
+import time
+
+start_time = time.time()
+
+
+async def main():
+
+    async with httpx.AsyncClient() as client:
+
+        for number in range(1, 151):
+            pokemon_url = f'https://pokeapi.co/api/v2/pokemon/{number}'
+
+            resp = await client.get(pokemon_url)
+            pokemon = resp.json()
+            print(pokemon['name'])
+
+asyncio.run(main())
+print("--- %s seconds ---" % (time.time() - start_time))
+
+
+This time, we're also measuring how much time the whole process takes. If you run this code in your Python shell, you should see something like the following printed to your terminal:
+
+Console output from 150 asynchronous requests
+
+8.6 seconds seems pretty good for 150 requests, but we don't really have anything to compare it to. Let's try accomplishing the same thing synchronously.
+
+
+Comparing speed with synchronous requests
+To print the first 150 Pokemon as before, but without async/await, run the following code:
+
+import httpx
+import time
+
+start_time = time.time()
+client = httpx.Client()
+
+for number in range(1, 151):
+    url = f'https://pokeapi.co/api/v2/pokemon/{number}'
+    resp = client.get(url)
+    pokemon = resp.json()
+    print(pokemon['name'])
+
+print("--- %s seconds ---" % (time.time() - start_time))
+
+You should see the same output with a different runtime:
+
+Console output from 150 synchronous requests, displaying a time of ~10 seconds
+
+Although it doesn't seem to be that much slower than before. This is most likely because the connection pooling done by the HTTPX Client is doing most of the heavy lifting. However, we can utilize more asyncio functionality to get better performance than this.
+
+
+* Utilizing asyncio for improved performance
+
+There are more tools that asyncio provides which can greatly improve our performance overall. In the original example, we are using await after each individual HTTP request, which isn't quite ideal. We can instead run all of these requests "concurrently" as asyncio tasks and then check the results at the end using asyncio.ensure_future and asyncio.gather.
+
+If the code that actually makes the request is broken out into its own coroutine function, we can create a list of tasks, consisting of futures for each request. We can then unpack this list to a gather call, which runs them all together. When we await this call to asyncio.gather, we will get an iterable for all of the futures that were passed in, maintaining their order in the list. This way we're only using await one time.
+
+To see what happens when we implement this, run the following code:
+
+import asyncio
+import httpx
+import time
+
+
+start_time = time.time()
+
+
+async def get_pokemon(client, url):
+        resp = await client.get(url)
+        pokemon = resp.json()
+
+        return pokemon['name']
+
+
+async def main():
+
+    async with httpx.AsyncClient() as client:
+
+        tasks = []
+        for number in range(1, 151):
+            url = f'https://pokeapi.co/api/v2/pokemon/{number}'
+            tasks.append(asyncio.ensure_future(get_pokemon(client, url)))
+
+        original_pokemon = await asyncio.gather(*tasks)
+        for pokemon in original_pokemon:
+            print(pokemon)
+
+asyncio.run(main())
+print("--- %s seconds ---" % (time.time() - start_time))
+
+
+(Console output from 150 asynchronous requests, but with a much faster runtime of 1.54 seconds)
+
+This brings our time down to a mere 1.54 seconds for 150 HTTP requests! That is a vast improvement over the previous examples. This is completely non-blocking, so the total time to run all 150 requests is going to be roughly equal to the amount of time that the longest request took to run. The exact numbers will vary depending on your internet connection.
