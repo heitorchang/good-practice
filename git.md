@@ -72,7 +72,7 @@ To make a local copy of a remote branch:
 `git fetch --all`
 `git checkout branch_name`
 
-To copy a file from another branch (merge partially):
+To copy a file from another branch (merge single file):
 
 `git checkout other_branch_name path/to/file_name`
 
