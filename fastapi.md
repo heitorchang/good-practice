@@ -27,11 +27,13 @@ dist/
 `requirements.txt`
 
 ```
-fastapi==0.73.0
-uvicorn==0.17.5
-httpx==0.22.0
-requests==2.25.1
+fastapi==0.78.0
 google-cloud-storage==2.3.0
+httpx==0.23.0
+pg8000==1.29.1
+requests==2.27.1
+SQLAlchemy==1.4.36
+uvicorn==0.17.6
 ... and others ...
 ```
 
@@ -157,3 +159,14 @@ To avoid accidentally deploying a buggy release, edit the trigger to run only on
 ## Reverting to an older build
 
 Under the "Revisions" tab, click on Manage Traffic.
+
+
+## Selecting the right container
+
+After building, it may be necessary to find and select the right image:
+
+Go to the "Edit and deploy new revision" option
+
+Select "Container Image URL"
+
+Search for the image under "gcr.io/tokwsv3/bitbucket.org"
