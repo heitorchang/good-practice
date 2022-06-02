@@ -88,9 +88,9 @@ To clear the credential cache:
 
 `git credential-cache exit`
 
-To show a pretty graph with branches (mnemonic: adog)
+To show a pretty graph with branches
 
-`git log --all --decorate --oneline --graph`
+`git log --all --decorate --oneline --graph` (aliased as gitgraph)
 
 To get a local copy of all branches:
 
