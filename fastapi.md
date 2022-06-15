@@ -39,6 +39,8 @@ uvicorn==0.17.6
 
 `main.py`
 
+(Note: use routers to organize larger projects)
+
 ```
 from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
