@@ -123,3 +123,7 @@ Check if dev branch has been merged into master:
 `git log master..dev`
 
 if nothing is printed, dev has been merged into master.
+
+Remove references to deleted remote branches
+
+`git remote update origin --prune`
