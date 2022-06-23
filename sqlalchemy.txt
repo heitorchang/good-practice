@@ -2,3 +2,5 @@ from sqlalchemy.sql import text
 
 s = text("""select u from users where users.name between :x and :y""")
 results = conn.execute(s, {"x": "a", "y": "e"}).fetchall()
+
+RecursionError: jsonable_encoder is likely due to missing fetchone() or fetchall() after conn.execute(sql, ...)
