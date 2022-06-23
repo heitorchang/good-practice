@@ -1,0 +1,4 @@
+from sqlalchemy.sql import text
+
+s = text("""select u from users where users.name between :x and :y""")
+results = conn.execute(s, {"x": "a", "y": "e"}).fetchall()
