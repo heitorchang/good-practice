@@ -81,7 +81,7 @@ See column names
 select column_name from information_schema.columns
 where table_schema = 'public'
 and table_name = 'mytable'
-order by column_name
+order by column_name;
 
 
 ## Users
@@ -99,7 +99,7 @@ enter the `psql` command-line tool
 
 insert into users (name, age) values
 ('tina', 23),
-('joe', 33)
+('joe', 33);
 
 select * from users where name like '%tina%';
 
@@ -125,7 +125,7 @@ Example: There may be multiple model simulations during a single day (multiple r
             and m.custom_forecast is true
             group by hsfe.model_id, m.display_name, m.vies, m.parent_folder, created, updated, m.sort_order, comprimento
             order by m.sort_order, ultima desc) as cte
-	    where part_row = 1
+	    where part_row = 1;
 
 ## Adding column with default value
 
