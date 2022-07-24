@@ -142,7 +142,8 @@ with cte_to_delete as (
   and price < 70
 )
 select * from mygame
-where game_id in (select game_id from cte_to_delete)
+where game_id in (select ctd.game_id from cte_to_delete ctd)
 ;
 
 Then replace the SELECT line with a DELETE from
+Note: ctd is added to avoid a "correlated subquery" reference that can result in DELETE affecting extra rows
