@@ -130,3 +130,19 @@ Example: There may be multiple model simulations during a single day (multiple r
 ## Adding column with default value
 
 alter table MY_TABLE add column NEW_COLUMN TYPE default MY_DEFAULT;
+
+
+## Delete using a CTE
+
+-- Check rows with a SELECT first
+with cte_to_delete as (
+  select game_id from mygame
+  join mygame_genre mgg using(game_genre_id)
+  where mgg.name = 'RPG'
+  and price < 70
+)
+select * from mygame
+where game_id in (select game_id from cte_to_delete)
+;
+
+Then replace the SELECT line with a DELETE from
