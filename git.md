@@ -63,6 +63,8 @@ To move to latest commit: `git checkout -`
 
 Revert non-committed changes: `git restore my_file`
 
+Revert all files: `git restore .`
+
 Unstage: `git restore --staged my_file`
 
 To reset master to be the same as remote:
@@ -82,7 +84,7 @@ Log: `git log --oneline`
 
 To save credentials in a cache for 8 hours (28800 seconds)
 
-`git config credential.helper 'cache --timeout=28800'`
+`git config --global credential.helper 'cache --timeout=28800'`
 
 To clear the credential cache:
 

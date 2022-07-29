@@ -1,0 +1,10 @@
+Django
+------
+always use explicit properties instead of relying on __str__ (example: user.company.name instead of user.company)
+
+
+Python
+------
+conditional assignment:
+
+value2 = x if x is not None else "a default value"
