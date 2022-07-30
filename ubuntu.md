@@ -44,3 +44,9 @@ xkill
 ## Pasting large amounts of data from the clipboard to a file
 
 `xclip -o > /path/to/file`
+
+## Changing package server
+
+Open "Software & Updates" from Activities
+
+Choose "Download from: Main server"
