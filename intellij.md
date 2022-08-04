@@ -48,3 +48,10 @@ Jump to matching parens or braces: Ctrl + Shift + M
 ## Highlight fragments and surrounding fragments
 
 Ctrl + Alt + W (type repeatedly)
+
+## Splitting the window
+
+Split down: C-x 2
+Split right: C-x 3
+Return to one window: C-x 1
+Switch windows: C-x o
