@@ -12,6 +12,12 @@ Settings > Version Control > Confirmation > Prompt to unlock files set to read-o
 
 Ctrl + Alt + S opens Settings
 
+## Kotlin REPL
+
+Type Alt + 1 (custom shortcut) to open Tools > Kotlin REPL
+Click on the U-shaped icon on the left sidebar to rebuild (could not yet find a keyboard shortcut command)
+
+
 ## Python REPL
 
 Open a Python console under Tools or type Alt + 0 (custom shortcut)
@@ -31,6 +37,7 @@ Type Ctrl + Shift + M to jump to the matching parens.
 Using Emacs keymap, Ctrl + N and Ctrl + P scroll the autocomplete list
 
 Run: Shift + F10
+Type Alt + 4 to switch to the Run window
 
 Comment: Alt + ; (semicolon)
 
