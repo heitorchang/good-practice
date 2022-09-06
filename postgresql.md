@@ -149,3 +149,19 @@ where game_id in (select ctd.game_id from cte_to_delete ctd)
 
 Then replace the SELECT line with a DELETE from
 Note: ctd is added to avoid a "correlated subquery" reference that can result in DELETE affecting extra rows
+
+
+## Show row count for all tables
+
+select table_schema, table_name, (xpath('/row/cnt/text()', xml_count))[1]::text::int as row_count
+from (select table_name, table_schema, query_to_xml(format(
+  'select count(*) as cnt from %I.%I', table_schema, table_name), false, true, '') as xml_count
+  from information_schema.tables
+  where table_schema = 'public') t
+order by row_count desc, table_name;
+
+
+## enums
+
+\dT
+select unnest(enum_range(null::MY_ENUM));
