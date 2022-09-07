@@ -164,4 +164,4 @@ order by row_count desc, table_name;
 ## enums
 
 \dT
-select unnest(enum_range(null::MY_ENUM));
+select unnest(enum_range(null::MY_ENUM))::text as e order by e;
