@@ -69,3 +69,7 @@ C-y then C-u C-SPC
 # No color in terminal
 
 emacs -nw --color=no
+
+# kill-sexp
+
+C-M-k
