@@ -11,6 +11,18 @@ Running `clj` in a folder with `deps.edn` will set up the right dependencies and
 
 In Emacs' shell, `clojure` will not cause the rlwrap error.
 
+### docs
+
+(doc +)
+(find-doc "lazy") ; searches doc text
+(apropos "info") ; prints names of matching functions
+
+### multiline comment macro
+
+(comment
+  (defn some-function [x y]
+    (+ x y)))
+
 ### Cider debugging
 
 `C-c C-q` quits.
@@ -72,6 +84,10 @@ Save in /home/heitor/cljrepl/project.clj
 
 ;; WAIT for REPL to load
 ```
+
+## lein not in exec-path
+
+To solve this, type M-x customize-group RET cider. Then look for Cider lein command and set the absolute path of lein.
 
 ## Running examples in Programming Clojure, 3rd edition
 
@@ -183,3 +199,18 @@ Show table names:
 
 Query a table:
 (p/print-table (j/query db "select * from my_table"))
+
+### nil and booleans
+
+nil is Java's null
+Everything other than false and nil is considered true. There is a 'true' value
+
+### numbers
+
+Integer (Long) 42, 0x2a, 052, 36r16
+Big integer (bigint) 42N
+Ratio (rationalize) 1/3
+Big decimal (bigdec) 2.79M
+Floating point (double) 2.92e9
+
+Arithmetic functions +' -' *' inc' dec' promote the result to big values
