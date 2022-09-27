@@ -20,4 +20,6 @@ Add to /home/protected/run-hunch.sh
 sbcl --script /home/protected/hunch.lisp
 ```
 
+chmod +x run-hunch.sh
+
 Setup a daemon and http proxy on port 4242
