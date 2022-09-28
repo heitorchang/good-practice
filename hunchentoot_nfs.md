@@ -7,26 +7,44 @@ cd /home/private
 curl -O https://beta.quicklisp.org/quicklisp.lisp
 sbcl --load quicklisp.lisp
 (quicklisp-quickstart:install)
-;; no need to add to init file
+(ql:add-to-init-file) ; edits .sbclrc
+
 
 Add to /home/protected/hunch.lisp:
 
 ```
-(load "/home/private/quicklisp/setup.lisp")
-(format t "Starting server")
-
 (ql:quickload 'hunchentoot)
 (hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port 4242))
 ```
 
-Add to /home/protected/runhunch.sh
+Snooze
 
+snooze.lisp
+```
+(ql:quickload "snooze")
+(ql:quickload "hunchentoot")
+
+(defvar *visitors* '())
+
+(snooze:defroute my-snooze (:get :text/* name)
+  (setf *visitors* (cons name *visitors*))
+  (format nil "Hello ~{~a ~}" *visitors*))
+
+(push (snooze:make-hunchentoot-app) hunchentoot:*dispatch-table*)
+(hunchentoot:start (make-instance 'hunchentoot:easy-acceptor :port 4242))
+```
+
+Daemon should run in the foreground
+
+runsnooze.sh
 ```
 #!/bin/sh
 
-sbcl --script /home/protected/hunch.lisp
+exec sbcl --load /home/protected/snooze.lisp
 ```
 
-chmod +x runhunch.sh
+chmod a+x runsnooze.shSnooze
 
-Setup a daemon and http proxy on port 4242
+Setup the daemon to run as "me"
+
+Setup http proxy on port 4242
