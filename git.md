@@ -129,3 +129,7 @@ if nothing is printed, dev has been merged into master.
 Remove references to deleted remote branches
 
 `git remote update origin --prune`
+
+View history of a portion of a file
+
+`git log -L 1,99:File.txt`

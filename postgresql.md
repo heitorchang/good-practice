@@ -165,3 +165,11 @@ order by row_count desc, table_name;
 
 \dT
 select unnest(enum_range(null::MY_ENUM))::text as e order by e;
+
+## backup database
+
+pg_dump -h localhost -U admin mydb > backups/mydb_2022-01-01.sql
+
+## Save a query result to CSV
+
+\copy (select * from data ...) to '/tmp/data_001.csv' with csv delimiter ';' header
