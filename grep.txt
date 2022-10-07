@@ -1,0 +1,10 @@
+# To find filenames that contain both AAA and BBB
+
+grep -l AAA `grep -lir BBB --include="*.py"`
+
+
+# Show single line and surrounding text where a string occurs (bash function)
+
+padgrep() {
+    grep -Iinor --color=never --exclude-dir=".git" --exclude-dir="env2" --exclude-dir="var" --exclude-dir="dist" --exclude-dir="node_modules" ".\{0,26\}$1.\{0,26\}" *
+}
