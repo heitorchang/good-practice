@@ -1,6 +1,6 @@
 # To find filenames that contain both AAA and BBB
 
-grep -l AAA `grep -lir BBB --include="*.py"`
+grep -li AAA `grep -lir BBB --include="*.py"`
 
 
 # Show single line and surrounding text where a string occurs (bash function)
