@@ -173,15 +173,23 @@ pg_dump -U username -h localhost dbname > dump_filename.sql
 
 ## Restore DB
 
-Need to reset the DB first (add a space in the beginning to avoid saving to Bash history)
+Need to reset the DB first
+
+Terminate existing connections:
+
+select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity
+where datname = current_database() and pid <> pg_backend_pid();
+
+then (add a space in the beginning to avoid saving the command to Bash history)
 
  dropdb -U username -h localhost dbname
 
 then create it
 
- createdb -U username -h localhost dbname
+createdb -U username -h localhost dbname
 
-and load dump (add COMMIT; to the end of sql dump file)
+Add COMMIT; to the end of sql dump file if auto-commit mode is off
+then load dump
 
 psql -U username -h localhost dbname < dump_filename.sql
 
