@@ -166,9 +166,25 @@ order by row_count desc, table_name;
 \dT
 select unnest(enum_range(null::MY_ENUM))::text as e order by e;
 
-## backup database
 
-pg_dump -h localhost -U admin mydb > backups/mydb_2022-01-01.sql
+## Dump to .sql file
+
+pg_dump -U username -h localhost dbname > dump_filename.sql
+
+## Restore DB
+
+Need to reset the DB first (add a space in the beginning to avoid saving to Bash history)
+
+ dropdb -U username -h localhost dbname
+
+then create it
+
+ createdb -U username -h localhost dbname
+
+and load dump (add COMMIT; to the end of sql dump file)
+
+psql -U username -h localhost dbname < dump_filename.sql
+
 
 ## Save a query result to CSV
 

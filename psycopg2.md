@@ -90,7 +90,7 @@ ON CONFLICT (name, city, state) DO NOTHING
     rows = [(r.station, r.observation_time, r.mm, r.mm, insert_datetime_now) for r in py_obj_list]
 
     # inside with block
-    
+
     execute_batch(
         cur,
         sql,
