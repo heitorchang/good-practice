@@ -189,9 +189,9 @@ then create it
 createdb -U username -h localhost dbname
 
 Add COMMIT; to the end of sql dump file if auto-commit mode is off
-then load dump
+then load dump (add a space in the beginning to avoid saving it to Bash history)
 
-psql -U username -h localhost dbname < dump_filename.sql
+ psql -U username -h localhost dbname < dump_filename.sql
 
 
 ## Save a query result to CSV
