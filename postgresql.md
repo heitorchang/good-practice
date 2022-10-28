@@ -166,6 +166,11 @@ order by row_count desc, table_name;
 \dT
 select unnest(enum_range(null::MY_ENUM))::text as e order by e;
 
+## add to enum
+
+alter type MY_ENUM add value 'new value' BEFORE 'old value';
+alter type MY_ENUM add value 'new value' AFTER 'old value';
+
 
 ## Dump to .sql file
 
