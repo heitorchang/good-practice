@@ -70,3 +70,7 @@ session.mount("https://", HTTPAdapter(max_retries=retries))
 
 session.get(...)
 session.post(...)
+
+## PyCharm
+
+Type Ctrl + Alt + S to open Settings. Search for "Run file in Python Console" and assign Ctrl + F10 to it (and remove existing keybinding).
