@@ -133,3 +133,11 @@ Remove references to deleted remote branches
 View history of a portion of a file
 
 `git log -L 1,99:File.txt`
+
+Revert latest commit
+
+`git revert <hash of commit to undo>`
+
+Reset to given commit
+
+`git reset`... commands I've seen so far are dangerous.
