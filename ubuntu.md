@@ -50,3 +50,15 @@ xkill
 Open "Software & Updates" from Activities
 
 Choose "Download from: Main server"
+
+## Edit keyboard shortcuts
+
+Click "Activities" on the top left or type "Windows key"
+
+Open "Settings" and find "Keyboard"
+
+Click on "View and Customize Shortcuts"
+
+Edit Navigation > Hide all normal windows
+
+Press Backspace to remove it.
