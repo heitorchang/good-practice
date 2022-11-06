@@ -110,6 +110,12 @@ To bring in all vars from another lib, call (not recommended)
 
 According to `(doc ns)`, use of ns is preferred to individual calls to in-ns/require/use/import
 
+(ns com.example.my-app
+  "My app"
+  (:require
+    [clojure.set :as set]
+    [clojure.string :as str]))
+
 ## Current working directory
 
 `(System/getProperty "user.dir")`
@@ -217,17 +223,21 @@ Arithmetic functions +' -' *' inc' dec' promote the result to big values
 
 ## IntelliJ IDEA with Cursive
 
-Alt + Shift + P sends top form to REPL
-Ctrl + \ switches to REPL
-Esc switches to code
-Ctrl + Alt + D deletes expression
-Ctrl + ( wraps a new sexp
-Set Ctrl + \ to Toggle Structural Editing Style (Paredit mode does not allow entering parens anywhere)
 Set Alt + - to Jump to REPL Editor
 Set Alt + 0 to Focus editor
 Set Alt + 9 to Tool Windows > Debug
-Alt + 5 opens Debug
+
+Alt + Shift + P sends top form to REPL
+Ctrl + Alt + D cuts expression
+Ctrl + ( wraps a sexp
+Alt + S removes surrounding parens (splice sexp)
 Alt + R raises sexp
+Alt + Shift + J/K slurps/barfs forwards
+Ctrl + Alt + J/K slurps/barfs backwards
+(include/exclude items at either end of the sexp)
+Ctrl + W repeatedly selects surrounding forms
+
+Click on bottom-right corner to toggle Structural Editing Style (Paredit mode does not allow entering parens anywhere)
 
 REPL: Click on the dropdown on the top-right and Edit Configurations...
 Select Clojure REPL > Local
