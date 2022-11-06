@@ -214,3 +214,23 @@ Big decimal (bigdec) 2.79M
 Floating point (double) 2.92e9
 
 Arithmetic functions +' -' *' inc' dec' promote the result to big values
+
+## IntelliJ IDEA with Cursive
+
+Alt + Shift + P sends top form to REPL
+Ctrl + \ switches to REPL
+Esc switches to code
+Ctrl + Alt + D deletes expression
+Ctrl + ( wraps a new sexp
+Set Ctrl + \ to Toggle Structural Editing Style (Paredit mode does not allow entering parens anywhere)
+Set Alt + - to Jump to REPL Editor
+Set Alt + 0 to Focus editor
+Set Alt + 9 to Tool Windows > Debug
+Alt + 5 opens Debug
+Alt + R raises sexp
+
+REPL: Click on the dropdown on the top-right and Edit Configurations...
+Select Clojure REPL > Local
+Type Shift + F9 to debug
+Click on the gear > Move to > Bottom left
+Ctrl + Up/Down scrolls history items
