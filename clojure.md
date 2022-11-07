@@ -223,6 +223,11 @@ Arithmetic functions +' -' *' inc' dec' promote the result to big values
 
 ## IntelliJ IDEA with Cursive
 
+In Ubuntu, disable these keyboard shortcuts (Open Settings > Keyboard > Shortcuts)
+Navigation:
+Hide all normal windows
+Move to workspace on the left/right
+
 Set Alt + - to Jump to REPL Editor
 Set Alt + 0 to Focus editor
 Set Alt + 9 to Tool Windows > Debug
@@ -232,6 +237,9 @@ Set Ctrl + 9 to Split right
 
 Set Ctrl + Alt + Left to Goto Previous Splitter
 Set Ctrl + Alt + Right to Goto Next Splitter
+
+Set Ctrl + Alt + [ toMove Caret to code block start
+Set Ctrl + Alt + ] to Move Caret to code block end
 
 Alt + Shift + P sends top form to REPL
 Ctrl + Alt + D cuts expression
