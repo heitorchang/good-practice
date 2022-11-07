@@ -227,6 +227,12 @@ Set Alt + - to Jump to REPL Editor
 Set Alt + 0 to Focus editor
 Set Alt + 9 to Tool Windows > Debug
 
+Set Ctrl + 0 to Unsplit all
+Set Ctrl + 9 to Split right
+
+Set Ctrl + Alt + Left to Goto Previous Splitter
+Set Ctrl + Alt + Right to Goto Next Splitter
+
 Alt + Shift + P sends top form to REPL
 Ctrl + Alt + D cuts expression
 Ctrl + ( wraps a sexp
