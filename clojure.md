@@ -238,7 +238,7 @@ Set Ctrl + 9 to Split right
 Set Ctrl + Alt + Left to Goto Previous Splitter
 Set Ctrl + Alt + Right to Goto Next Splitter
 
-Set Ctrl + Alt + [ toMove Caret to code block start
+Set Ctrl + Alt + [ to Move Caret to code block start
 Set Ctrl + Alt + ] to Move Caret to code block end
 
 ;; (default) Alt + Shift + P sends top form to REPL
@@ -253,6 +253,8 @@ Alt + Shift + J/K slurps/barfs forwards
 Ctrl + Alt + J/K slurps/barfs backwards
 (include/exclude items at either end of the sexp)
 Ctrl + W repeatedly selects surrounding forms
+
+Ctrl + Alt + I auto indents line
 
 Click on bottom-right corner to toggle Structural Editing Style (Paredit mode does not allow entering parens anywhere)
 
