@@ -73,3 +73,10 @@ emacs -nw --color=no
 # kill-sexp
 
 C-M-k
+
+# Paredit
+
+Use M-o to switch windows
+
+C-M-u Move up a level
+C-M-d Move down a level
