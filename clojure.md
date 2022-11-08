@@ -245,6 +245,12 @@ Set Ctrl + Alt + ] to Move Caret to code block end
 Set Ctrl + Enter to Send top form to REPL
 Set Shift + Enter to Start new line
 
+Main Menu > Navigate > Structural Movement
+Set Ctrl + P to Move Forward Out of Sexp
+Set Ctrl + O to Move Backward Out of Sexp
+Set Alt + P to Move Forward Into Sexp
+Set Alt + O to Move Backward Into Sexp
+
 Ctrl + Alt + D cuts expression
 Ctrl + ( wraps a sexp
 Alt + S removes surrounding parens (splice sexp)
