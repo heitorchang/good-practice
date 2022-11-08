@@ -242,8 +242,8 @@ Set Ctrl + Alt + [ to Move Caret to code block start
 Set Ctrl + Alt + ] to Move Caret to code block end
 
 ;; (default) Alt + Shift + P sends top form to REPL
-Set Ctrl + Enter AND Shift + Enter to Send top form to REPL
-Set Ctrl + Shift + Enter to Start new line
+Set Ctrl + Enter to Send top form to REPL
+Set Shift + Enter to Start new line
 
 Ctrl + Alt + D cuts expression
 Ctrl + ( wraps a sexp
