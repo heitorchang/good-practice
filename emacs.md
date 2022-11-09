@@ -79,8 +79,12 @@ C-M-k
 Set M-z to undo
 Use M-o to switch windows
 
+Add to clojure-mode-hook:
+(define-key paredit-mode-map (kbd "<C-left>") 'left-word)
+(define-key paredit-mode-map (kbd "<C-right>") 'right-word)
+
 C-M-u Move up a level
 C-M-d Move down a level
 
-M-n jumps outside to the right of sexp to the top level
-M-p jumps outside to the left of sexp to the top level
+M-n jumps outside to the right of sexp to the top level (forward-paragraph)
+M-p jumps outside to the left of sexp to the top level (backward-paragraph)
