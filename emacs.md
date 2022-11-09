@@ -76,7 +76,11 @@ C-M-k
 
 # Paredit
 
+Set M-z to undo
 Use M-o to switch windows
 
 C-M-u Move up a level
 C-M-d Move down a level
+
+M-n jumps outside to the right of sexp to the top level
+M-p jumps outside to the left of sexp to the top level
