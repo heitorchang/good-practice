@@ -140,4 +140,7 @@ Revert latest commit
 
 Reset to given commit
 
-`git reset`... commands I've seen so far are dangerous.
+Do not use if others have pulled your code
+
+`git reset --hard <previous commit>`
+`git push -f origin <branch name>`
