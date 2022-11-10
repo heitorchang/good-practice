@@ -144,3 +144,15 @@ Do not use if others have pulled your code
 
 `git reset --hard <previous commit>`
 `git push -f origin <branch name>`
+
+Stash with a name (recommended)
+
+`git stash push -m "name of stash"
+
+To apply a stash:
+
+First, check its index, then apply or pop by its index number
+
+`git stash list`
+`git stash apply 3`
+`git stash pop 3`
