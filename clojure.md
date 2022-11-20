@@ -85,11 +85,19 @@ Save in /home/heitor/cljrepl/project.clj
 ;; WAIT for REPL to load
 ```
 
-## lein not in exec-path
+### Create a new project
+
+Note: dashes and underscores are converted automatically depending on context (directory vs. namespace)
+
+lein new app my_project
+Open my_app/project.clj in Emacs and type F2 (cider-jack-in)
+Code in my-app/src/my_app/core.clj
+
+### lein not in exec-path
 
 To solve this, type M-x customize-group RET cider. Then look for Cider lein command and set the absolute path of lein.
 
-## Running examples in Programming Clojure, 3rd edition
+### Running examples in Programming Clojure, 3rd edition
 
 Visit (C-x C-f) `deps.edn` in the top-level directory, to set Emacs' working directory to that directory.
 
