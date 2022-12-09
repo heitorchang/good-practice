@@ -156,3 +156,8 @@ First, check its index, then apply or pop by its index number
 `git stash list`
 `git stash apply 3`
 `git stash pop 3`
+
+Restore many files that were deleted and staged but not committed:
+
+`git reset HEAD .`
+`git checkout .`
