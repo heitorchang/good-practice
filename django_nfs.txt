@@ -5,7 +5,8 @@ Installing and running Django on NearlyFreeSpeech
 3. In /home/protected/, clone the Django site
 4. python3 -m venv virtualenv
 5. source virtualenv/bin/activate
-6. pip install django gunicorn
+6. If using the newest Django: pip install django gunicorn
+     Otherwise, pip install -r requirements.txt
 7. create the file run-django.sh in the same directory as manage.py
 
 #!/bin/bash
@@ -15,7 +16,12 @@ gunicorn MY_PROJECT_NAME.wsgi
 
 8. chmod 700 run-django.sh
 
-8b. Add (my)secrets.py to PROJECT_NAME (where settings.py is located) with `SECRET_KEY = "xxxxxxx"`
+8b. Add mysecrets.py to PROJECT_NAME (where settings.py is located) with `SECRET_KEY = "xxxxxxx"` and `DEBUG = False`
+
+8c. Add the public hostname to ALLOWED_HOSTS
+
+8d. python manage.py migrate
+8e. python manage.py createsuperuser
 
 9. add daemon in NFS members' admin site
   - tag: django
@@ -37,7 +43,7 @@ gunicorn MY_PROJECT_NAME.wsgi
   - base URI: /images/
   - Document root: /home/public/images/
   - target port: 8080  (port does not matter for protocol: none)
-  
+
 12. If needed, restart daemon in NFS admin site (such as when settings change). Use `HUP` instead of stopping and starting.
 
 13. Let's encrypt
@@ -53,18 +59,12 @@ Port: Anything (default 8080)
 
 14. Edit canonical URL settings to enable auto redirect to https
 
-15. Create mysecrets.py
-
-16. Add SITE.nfshost.com URL to ALLOWED_HOSTS
-
-17. python manage.py migrate
-
-18. static files:
+15. static files:
 
   - add to settings.py: STATIC_ROOT = '/home/public/static'
   - run python manage.py collectstatic
 
-19. make a new proxy for static/
+16. make a new proxy for static/
 
   - protocol: none
   - base URI: /images/
