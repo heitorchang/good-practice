@@ -156,3 +156,17 @@ First, check its index, then apply or pop by its index number
 `git stash list`
 `git stash apply 3`
 `git stash pop 3`
+
+Restore many files that were deleted and staged but not committed:
+
+`git reset HEAD .`
+`git checkout .`
+
+Restore master and develop to the same state as remote (do not run pull --rebase on master/develop)
+
+First run
+`git fetch origin`
+
+Then one of:
+`git reset --hard origin/master`
+`git reset --hard origin/develop`

@@ -8,6 +8,10 @@ Help
 
 `\?` and `\h`
 
+Expanded display mode (toggle on/off)
+
+`\x`
+
 Exiting psql
 
 `\q`
@@ -199,6 +203,9 @@ then load dump (add a space in the beginning to avoid saving it to Bash history)
  psql -U username -h localhost dbname < dump_filename.sql
 
 
-## Save a query result to CSV
+## Save a query result to CSV (semicolon ; as delimiter)
 
 \copy (select * from data ...) to '/tmp/data_001.csv' with csv delimiter ';' header
+
+Empty template:
+\copy () to '/tmp/.csv' with csv delimiter ';' header
