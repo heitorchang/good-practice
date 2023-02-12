@@ -51,3 +51,7 @@ View: Focus Below Editor : Alt + Down
 Toggle Block Comment: Ctrl+Shift+/
 
 
+Saving a copy of current keybindings
+------------------------------------
+
+Make a copy of ~/.config/Code/User/keybindings.json

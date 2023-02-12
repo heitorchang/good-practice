@@ -176,3 +176,9 @@ function useFriendStatus(friendID) {
   return isOnline;
 }
 ```
+
+## Recoil
+
+Why use Recoil?
+
+* Unlike context, intermediate components won't re-render if the innermost component has changed.
