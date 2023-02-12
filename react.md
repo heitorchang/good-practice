@@ -182,3 +182,7 @@ function useFriendStatus(friendID) {
 Why use Recoil?
 
 * Unlike context, intermediate components won't re-render if the innermost component has changed.
+
+## JSX
+
+* Only expressions are allowed inside curly braces. Therefore, `if` and `for` won't work. You can use the `isSomething ? whenTrue : whenFalse` ternary operator. An `if` statement needs to be outside JSX.
