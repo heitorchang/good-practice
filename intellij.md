@@ -55,3 +55,7 @@ Split down: C-x 2
 Split right: C-x 3
 Return to one window: C-x 1
 Switch windows: C-x o
+
+## Navigation
+
+Alt + Shift + Left/Right: moves to and from previously active locations.
