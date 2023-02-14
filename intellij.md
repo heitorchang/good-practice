@@ -58,4 +58,5 @@ Switch windows: C-x o
 
 ## Navigation
 
+Keymap action: Main Menu > Navigate > Back/Forward
 Alt + Shift + Left/Right: moves to and from previously active locations.
