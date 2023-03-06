@@ -13,4 +13,9 @@ go to the encrypted directory
 gpg -d usuarios.txt.gpg > ../plaintext/usuarios.txt
 
 
-Write a password hint at the top of the encrypted file
+Write a password hint in the filename of the encrypted file
+
+To test, run
+gpgconf --reload gpg-agent
+
+to forget the password from history, then try decrypting the newly created file.
