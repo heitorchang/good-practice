@@ -1,0 +1,7 @@
+# SBCL
+
+## Directories
+
+(sb-posix:getcwd) ; => #P"/home/heitor/"
+(sb-posix:chdir #P"/home/heitor/tmp")
+(sb-posix:chdir #P"~/tmp")
