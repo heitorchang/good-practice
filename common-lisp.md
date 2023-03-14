@@ -24,6 +24,14 @@ How to exit Lisp: (quit)
 Interrupt: C-c C-c
 Exit the debugger completely: q
 
+### Finding definitions
+
+After finishing writing definitions, type C-c C-k to "slime-compile-and-load-file"
+
+Whenever these new functions are used, typing M-. on top of its name jumps to its definition.
+
+Type M-. to backtrack to previous locations.
+
 ## CLISP
 
 In the default REPL, type :q to exit the debugger.
