@@ -8,7 +8,7 @@ Opening the terminal and switching back-and-forth
 -------------------------------------------------
 Press Ctrl + K then still holding down Ctrl, press S to open the keyboard shortcuts screen
 
-Type ctrl+q, right-click the keybinding to remove it.
+Type ctrl + q, right-click the keybinding to remove it.
 
 Type terminal.toggleTerminal
 
@@ -55,3 +55,11 @@ Saving a copy of current keybindings
 ------------------------------------
 
 Make a copy of ~/.config/Code/User/keybindings.json
+
+
+Finding a definition and going back
+-----------------------------------
+
+Ctrl + Click to go to definition
+
+Ctrl + Alt + left to go back
