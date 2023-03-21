@@ -46,7 +46,7 @@ gunicorn MY_PROJECT_NAME.wsgi
 
 12. If needed, restart daemon in NFS admin site (such as when settings change). Use `HUP` instead of stopping and starting.
 
-13. Let's encrypt
+13. Let's encrypt (for custom domains)
 
 Looks like the tls-setup.sh script creates a .well-known folder in /home/public/. it must be reachable through http port 80
 
@@ -64,9 +64,9 @@ Port: Anything (default 8080)
   - add to settings.py: STATIC_ROOT = '/home/public/static'
   - run python manage.py collectstatic
 
-16. make a new proxy for static/
+16. make a new proxy for static/ (or say, /images/)
 
   - protocol: none
-  - base URI: /images/
-  - Document root: /home/public/images/
+  - base URI: /static/
+  - Document root: /home/public/static/
   - target port: 8080  (port does not matter for protocol: none)
