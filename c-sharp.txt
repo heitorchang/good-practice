@@ -1,0 +1,3 @@
+string MyData; // field
+
+string MyData { get; set; } // property (automatically implemented)
