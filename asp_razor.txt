@@ -1,0 +1,2 @@
+Show the current locale:
+@System.Globalization.CultureInfo.CurrentUICulture
