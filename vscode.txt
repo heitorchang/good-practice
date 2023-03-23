@@ -4,6 +4,26 @@ General notes
 * when doing search and replace, press F3 to skip to the next occurrence
 
 
+Opening a file
+--------------
+Ctrl + P is a better option than Ctrl + O
+
+
+Finding in all files
+--------------------
+Ctrl + Shift + F
+
+
+Switch to File Explorer and back
+--------------------------------
+Ctrl + Shift + E
+
+
+Close others (custom command)
+-----------------------------
+Alt + W
+
+
 Opening the terminal and switching back-and-forth
 -------------------------------------------------
 Press Ctrl + K then still holding down Ctrl, press S to open the keyboard shortcuts screen
@@ -17,22 +37,22 @@ Set the keybinding for terminal.toggleTerminal to be Ctrl + q
 
 Sending text to the terminal
 ----------------------------
-type ctrl+d to remove the existing binding.
+type ctrl + d to remove the existing binding.
 
 right-click on the existing binding and remove it.
 
 type terminal.run to show:
 
-runSelectedText = make it Ctrl+Shift+d
+runSelectedText = make it Ctrl + Shift + d
 
 
 Using the above settings
 ------------------------
 Run the interpreter in the terminal (Python, Octave, etc.)
 
-Press Ctrl+q to switch back-and-forth
+Press Ctrl + q to switch back-and-forth
 
-Press Ctrl+a then Ctrl+Shift+d to run the script.
+Press Ctrl + a then Ctrl + Shift + d to run the script.
 
 
 Custom keyboard shortcuts
@@ -48,7 +68,7 @@ Edit:
 View: Focus Above Editor : Alt + Up
 View: Focus Below Editor : Alt + Down
 
-Toggle Block Comment: Ctrl+Shift+/
+Toggle Block Comment: Ctrl + Shift + /
 
 
 Saving a copy of current keybindings
