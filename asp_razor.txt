@@ -1,2 +1,14 @@
 Show the current locale:
 @System.Globalization.CultureInfo.CurrentUICulture
+
+Model default value
+
+When adding a column, if it's not nullable, most likely an error will be raised.
+
+In the movies tutorial, "rating" is added in Part 7
+
+public class Movie
+{
+  ...
+  public string Rating { get; set; } = string.Empty;
+}
