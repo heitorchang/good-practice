@@ -208,11 +208,15 @@ For example, calling the ST-JSON macro getjso* does not work when passing a var.
 
 ## SBCL executable
 
+In Windows, these steps must be done in a terminal, not SLIME.
+
+cd to the directory containing the Lisp code
+
 Load the source file
-(load "/home/heitor/experimental/lisp/hello.lisp")
+(load "hello.lisp")
 
 Then build it
-(sb-ext:save-lisp-and-die "/home/heitor/hellobin" :toplevel #'hello-function :executable t)
+(sb-ext:save-lisp-and-die "hello.exe" :toplevel #'main-or-other-function :executable t)
 
 Use (progn ...) to make it a single sexp.
 
