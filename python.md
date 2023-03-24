@@ -74,3 +74,7 @@ session.post(...)
 ## PyCharm
 
 Type Ctrl + Alt + S to open Settings. Search for "Run file in Python Console" and assign Ctrl + F10 to it (and remove existing keybinding).
+
+## better_exceptions
+
+this package shows the values of function arguments when an exception is raised.
