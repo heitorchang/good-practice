@@ -227,3 +227,16 @@ Use (progn ...) to make it a single sexp.
   (sb-ext:save-lisp-and-die "/home/heitor/bin/add" :toplevel #'main :executable t))
 
 |#
+
+## Manually setting up str.lisp
+
+It depends on CL-PPCRE and cl-change-case (I commented out functions that depend on this library)
+
+Add to .sbclrc
+
+(require 'asdf)
+(setf asdf:*central-registry*
+  (list* #p"C:/Users/heitor/code/cl-lib/cl-ppcre/" asdf:*central-registry*))
+(asdf:operate 'asdf:load-op 'cl-ppcre)
+
+(load #p"C:/Users/heitor/code/cl-lib/str.lisp")
