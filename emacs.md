@@ -88,3 +88,7 @@ C-M-d Move down a level
 
 M-n jumps outside to the right of sexp to the top level (forward-paragraph)
 M-p jumps outside to the left of sexp to the top level (backward-paragraph)
+
+# Show backtrace on error
+
+M-x toggle-debug-on-error

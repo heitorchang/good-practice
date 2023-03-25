@@ -77,4 +77,14 @@ Type Ctrl + Alt + S to open Settings. Search for "Run file in Python Console" an
 
 ## better_exceptions
 
-this package shows the values of function arguments when an exception is raised.
+This package shows the values of function arguments when an exception is raised.
+
+In Windows, add to .emacs:
+
+(setq python-shell-interpreter "C:/Users/heitor/bin/python_better_exc.bat")
+
+and python_better_exc.bat
+
+python -m better_exceptions %1
+
+(the %1 corresponds to the "-i" flag that is passed behind-the-scenes)
