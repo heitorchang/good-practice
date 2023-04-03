@@ -1,3 +1,27 @@
 string MyData; // field
 
 string MyData { get; set; } // property (automatically implemented)
+
+# Starting a new command-line project
+
+dotnet new console
+
+Edit Program.cs
+
+dotnet run
+
+Adding Entity Framework:
+
+dotnet add package EntityFramework
+
+(use:
+using System.Data.Entity;
+)
+
+OR:
+
+dotnet add package Microsoft.EntityFrameworkCore
+
+(use:
+using Microsoft.EntityFrameworkCore;
+)
