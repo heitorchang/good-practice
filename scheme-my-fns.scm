@@ -1,3 +1,5 @@
+(display "Running R5RS Scheme\n")
+
 (define (my-add a b)
   (+ a b))
 
