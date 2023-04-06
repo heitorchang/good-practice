@@ -10,6 +10,8 @@ Bypass checks: `git commit --no-verify -m "commit message"`
 
 Pushing the first time: `git push -u origin master`
 
+The -u flag sets the upstream tracking branch, linking the local branch to the remote branch, so that future commands' arguments are no longer required.
+
 Viewing changes in all commits: `git log -p` (patch)
 
 Viewing changes in a single file: `git log -p -- filename`
