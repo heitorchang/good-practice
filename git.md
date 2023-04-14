@@ -1,5 +1,8 @@
 # Git
 
+NOTE: use and update hcdocs/src/tools/git.html instead
+
+
 Before committing: `git status`, `git diff`
 
 Adding all: `git add -A`
