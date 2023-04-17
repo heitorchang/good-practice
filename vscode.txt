@@ -37,7 +37,7 @@ Set the keybinding for terminal.toggleTerminal to be Ctrl + q
 
 Sending text to the terminal
 ----------------------------
-type ctrl + d to remove the existing binding.
+type ctrl + shift + d to remove the existing binding.
 
 right-click on the existing binding and remove it.
 
